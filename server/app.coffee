@@ -7,7 +7,7 @@ app = express()
 api = require './routes'
 mongodb.connect('mongodb://localhost:27017/restaurant', (err, db) ->
   if err
-    throw err
+    console.log "Couldn't connect to Database"
   else
     api.init(app, db)
     console.log "Connected to Database"
