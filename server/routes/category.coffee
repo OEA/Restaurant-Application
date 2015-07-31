@@ -57,3 +57,39 @@ ctrl.init = (app, db) ->
       )
 
   )
+
+  app.post('/category/edit', (req, resp) ->
+    name = req.body.name
+    update = req.body.update
+    if name? and update?
+      db.collection "categories", (err, catCollection) =>
+        catCollection.find({'name':name}).count((err, catCount) ->
+          if catCount > 0
+            db.collection "foods", (err, foodCollection) =>
+              foodCollection.find({'category':name}).count((err, foodCount) ->
+                if foodCount > 0
+                  foodCollection.update({'category':name},{$set:{'category':update}})
+                else
+                  #doNothing
+              )
+
+              db.collection "categories", (err, collection) =>
+                collection.update({'name':name},{$set:{'name':update}})
+                resp.send(
+                  code: 200,
+                  message: "success"
+                )
+          else
+            resp.send(
+              code: 400,
+              message: "fail",
+              detail: "There is no active category which you give"
+            )
+        )
+    else
+      resp.send(
+        code: 400,
+        message: "fail",
+        detail: "Please full the fields."
+      )
+  )
