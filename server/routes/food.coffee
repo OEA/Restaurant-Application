@@ -41,3 +41,24 @@ ctrl.init = (app, db) ->
         detail: "Please full the fields."
       )
   )
+
+  app.get('/food/delete/:name', (req, resp) ->
+    name = req.params.name
+    db.collection "foods", (err, collection) =>
+      collection.find({'name':name, 'active':1}).count((err, count) ->
+        if count > 0
+          collection.findOneAndDelete({'name':name, 'active':1},(err, item) ->
+            resp.send(
+              code: 200,
+              message: "success",
+              detail: "Food is deleted from our server."
+            )
+          )
+        else
+          resp.send(
+            code: 400,
+            message: "fail",
+            detail: "There is no active food which you give."
+          )
+      )
+  )
