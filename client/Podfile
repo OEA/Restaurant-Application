@@ -3,7 +3,7 @@ platform :ios, '7.0'
 
 
 target 'Restaurant Application' do
-pod "AFNetworking", "~> 2.0"
+pod 'AFNetworking', '2.2.1'
 end
 
 target 'Restaurant ApplicationTests' do
