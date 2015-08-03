@@ -10,6 +10,7 @@
 #import "CategoryManager.h"
 
 @interface MenuTVC()
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loading;
 @property (strong, nonatomic) NSMutableArray *categories;
 @end
 @implementation MenuTVC
@@ -17,6 +18,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.loading startAnimating];
     
 }
 
@@ -39,6 +41,7 @@
     if ( _categories != categories)
     {
         _categories = categories;
+        [self.loading stopAnimating];
         [self.tableView reloadData];
     }
 }
@@ -50,14 +53,17 @@
 
 - (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [UITableViewCell new];
-    NSDictionary *dict = [self.categories objectAtIndex:indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CategoryCell"];
+    NSMutableDictionary *dict = [self.categories objectAtIndex:indexPath.row];
     cell.textLabel.text = [dict objectForKey:@"name"];
     return cell;
 }
 
 - (NSString *)tableView:(nonnull UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"Menu Baslik";
+    if (!_categories)
+        return nil;
+    else
+        return @"Menu Baslik";
 }
 @end

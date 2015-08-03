@@ -8,7 +8,7 @@
 
 #import "CategoryManager.h"
 
-NSString * const baseURLString = @"http://localhost:8000/";
+NSString * const baseURLString = @"http://oeaslan.com/node/";
 
 @implementation CategoryManager
 
@@ -45,5 +45,6 @@ NSString * const baseURLString = @"http://localhost:8000/";
         failure(task, error);
     }];
 }
+
 
 @end
