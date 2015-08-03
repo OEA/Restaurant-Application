@@ -18,7 +18,10 @@ ctrl.init = (app, db) ->
               detail: "Email is picked from someone."
             )
           else
-            user = new User(name, email, password, 1, 1)
+            if isUser?
+              user = new User(name, email, password, 0, 1)
+            else
+              user = new User(name, email, password, 1, 1)
             collection.insert user, (err, user) =>
               if err
                 resp.send(

@@ -8,21 +8,28 @@ ctrl.init = (app, db) ->
     food = req.body.food
     quantity = req.body.quantity
     price = req.body.price
-    db.collection "orders", (err, collection) =>
-      order = new Order(user, food, quantity, price, 3)
-      collection.insert order, (err, order) =>
-        if err
-          resp.send(
-            code: 400,
-            message: "fail",
-            detail: "db error"
-          )
-        else
-          resp.send(
-            code:200,
-            message: "success",
-            order: order
-          )
+    if user? and food? and quantity? and price?
+      db.collection "orders", (err, collection) =>
+        order = new Order(user, food, quantity, price, 3)
+        collection.insert order, (err, order) =>
+          if err
+            resp.send(
+              code: 400,
+              message: "fail",
+              detail: "db error"
+            )
+          else
+            resp.send(
+              code:200,
+              message: "success",
+              order: order
+            )
+    else
+      resp.send(
+        code: 400,
+        message: "fail",
+        detail: "Please full the fields."
+      )
   )
 
   app.get('/node/order/get/:user', (req, resp) ->

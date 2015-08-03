@@ -42,11 +42,23 @@ ctrl.init = (app, db) ->
       collection.find({'active':1}).count((err, count) ->
         if count > 0
           collection.find({'active':1}).toArray((err, categories) ->
-            resp.send(
-              code: 200,
-              message: "success",
-              categories: categories
-            )
+            db.collection "foods", (err, foodCollection) =>
+              for category, i in categories
+                #console.log i
+                foodCollection.find({'active':1, 'category':category.name}).count((err, foodCount) ->
+
+                console.log category.name
+                  if foodCount?
+                    category.count = foodCount
+                  else
+                    category.count = 0
+
+                )
+              resp.send(
+                code: 200,
+                message: "success",
+                categories: categories
+              )
           )
         else
           resp.send(

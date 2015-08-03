@@ -62,3 +62,23 @@ ctrl.init = (app, db) ->
           )
       )
   )
+
+  app.get('/node/food/list', (req, resp) ->
+    db.collection "foods", (err, collection) =>
+      collection.find({'active':1}).count((err, count) ->
+        if count > 0
+          collection.find({'active':1}).toArray((err, foods)->
+            resp.send(
+              code: 200,
+              message: "success",
+              foods: foods
+            )
+          )
+        else
+          resp.send(
+            code: 400,
+            message: "fail",
+            detail: "there is no active food."
+          )
+      )
+  )
