@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "MenuTVC.h"
+#import "Food.h"
+#import "ViewController.h"
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 
 @interface AppDelegate ()
@@ -19,6 +22,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+    UINavigationController *leftNavController = [splitViewController.viewControllers objectAtIndex:0];
+    MenuTVC *leftViewController = (MenuTVC *)[leftNavController topViewController];
+    ViewController *rightViewController = [splitViewController.viewControllers objectAtIndex:1];
+    Food *food = [Food new];
+    food.name = @"Soup";
+    [rightViewController setFood:food];
+    
     return YES;
 }
 

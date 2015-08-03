@@ -46,5 +46,17 @@ NSString * const baseURLString = @"http://oeaslan.com/node/";
     }];
 }
 
+- (void)getFoods:(NSString *)category
+         success:(void(^)(NSURLSessionDataTask *task, id responseObject))success
+         failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure
+{
+    NSString *path = [NSString stringWithFormat:@"food/category/%@",category];
+    [self GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        success(task, responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failure(task, error);
+    }];
+}
+
 
 @end

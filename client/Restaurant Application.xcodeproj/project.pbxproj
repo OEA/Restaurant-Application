@@ -16,6 +16,8 @@
 		17FECF231B6F2D2D00791B5F /* Restaurant_ApplicationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FECF221B6F2D2D00791B5F /* Restaurant_ApplicationTests.m */; };
 		17FECF331B6F30EC00791B5F /* MenuTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FECF321B6F30EC00791B5F /* MenuTVC.m */; };
 		17FECF371B6F323C00791B5F /* CategoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FECF361B6F323C00791B5F /* CategoryManager.m */; };
+		17FECF3D1B6F8BA600791B5F /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FECF3C1B6F8BA600791B5F /* Food.m */; };
+		17FECF431B6F8FAE00791B5F /* CategoryM.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FECF421B6F8FAE00791B5F /* CategoryM.m */; };
 		893D9D8B98892F9628355491 /* libPods-Restaurant Application.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B83E942BFA7416C0ECDC147 /* libPods-Restaurant Application.a */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +50,10 @@
 		17FECF321B6F30EC00791B5F /* MenuTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTVC.m; sourceTree = "<group>"; };
 		17FECF351B6F323C00791B5F /* CategoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryManager.h; sourceTree = "<group>"; };
 		17FECF361B6F323C00791B5F /* CategoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryManager.m; sourceTree = "<group>"; };
+		17FECF3B1B6F8BA600791B5F /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
+		17FECF3C1B6F8BA600791B5F /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
+		17FECF411B6F8FAE00791B5F /* CategoryM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryM.h; sourceTree = "<group>"; };
+		17FECF421B6F8FAE00791B5F /* CategoryM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryM.m; sourceTree = "<group>"; };
 		2647EF13619840CC6E02BDB7 /* Pods-Restaurant Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restaurant Application.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Restaurant Application/Pods-Restaurant Application.debug.xcconfig"; sourceTree = "<group>"; };
 		7B83E942BFA7416C0ECDC147 /* libPods-Restaurant Application.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Restaurant Application.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -146,6 +152,9 @@
 		17FECF2F1B6F30AB00791B5F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				17FECF3A1B6F8B8D00791B5F /* Order */,
+				17FECF391B6F8B8300791B5F /* Category */,
+				17FECF381B6F8B7E00791B5F /* Food */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -166,6 +175,31 @@
 				17FECF361B6F323C00791B5F /* CategoryManager.m */,
 			);
 			path = CategoryManager;
+			sourceTree = "<group>";
+		};
+		17FECF381B6F8B7E00791B5F /* Food */ = {
+			isa = PBXGroup;
+			children = (
+				17FECF3B1B6F8BA600791B5F /* Food.h */,
+				17FECF3C1B6F8BA600791B5F /* Food.m */,
+			);
+			path = Food;
+			sourceTree = "<group>";
+		};
+		17FECF391B6F8B8300791B5F /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				17FECF411B6F8FAE00791B5F /* CategoryM.h */,
+				17FECF421B6F8FAE00791B5F /* CategoryM.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		17FECF3A1B6F8B8D00791B5F /* Order */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Order;
 			sourceTree = "<group>";
 		};
 		8751A3BC6D9950DA5ECF4E8E /* Frameworks */ = {
@@ -321,8 +355,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				17FECF101B6F2D2D00791B5F /* ViewController.m in Sources */,
+				17FECF431B6F8FAE00791B5F /* CategoryM.m in Sources */,
 				17FECF371B6F323C00791B5F /* CategoryManager.m in Sources */,
 				17FECF0D1B6F2D2D00791B5F /* AppDelegate.m in Sources */,
+				17FECF3D1B6F8BA600791B5F /* Food.m in Sources */,
 				17FECF331B6F30EC00791B5F /* MenuTVC.m in Sources */,
 				17FECF0A1B6F2D2D00791B5F /* main.m in Sources */,
 			);

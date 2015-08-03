@@ -18,4 +18,8 @@
               success:(void(^)(NSURLSessionDataTask *task, id responseObject))success
               failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure;
 
+- (void)getFoods:(NSString *)category
+              success:(void(^)(NSURLSessionDataTask *task, id responseObject))success
+              failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure;
+
 @end
