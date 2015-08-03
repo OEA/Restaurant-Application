@@ -2,7 +2,7 @@ ctrl = module.exports
 Category = require '../models/Category'
 
 ctrl.init = (app, db) ->
-  app.post('/category/add', (req, resp) ->
+  app.post('/node/category/add', (req, resp) ->
     name = req.body.name
     if name?
       db.collection "categories", (err, collection) =>
@@ -37,7 +37,7 @@ ctrl.init = (app, db) ->
       )
   )
 
-  app.get('/category/list', (req, resp) ->
+  app.get('/node/category/list', (req, resp) ->
     db.collection "categories", (err, collection) =>
       collection.find({'active':1}).count((err, count) ->
         if count > 0
@@ -58,7 +58,7 @@ ctrl.init = (app, db) ->
 
   )
 
-  app.post('/category/edit', (req, resp) ->
+  app.post('/node/category/edit', (req, resp) ->
     name = req.body.name
     update = req.body.update
     if name? and update?
@@ -94,7 +94,7 @@ ctrl.init = (app, db) ->
       )
   )
 
-  app.get('/category/delete/:name', (req, resp) ->
+  app.get('/node/category/delete/:name', (req, resp) ->
     name = req.params.name
     db.collection "categories", (err, collection) =>
       collection.find({'name':name, 'active':1}).count((err, count) ->

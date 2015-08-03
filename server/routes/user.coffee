@@ -2,7 +2,7 @@ ctrl = module.exports
 User = require '../models/User'
 
 ctrl.init = (app, db) ->
-  app.post('/user/register', (req, resp) ->
+  app.post('/node/user/register', (req, resp) ->
     name = req.body.name
     email = req.body.email
     password = req.body.password
@@ -41,7 +41,7 @@ ctrl.init = (app, db) ->
       )
   )
 
-  app.post('/user/login', (req, resp) ->
+  app.post('/node/user/login', (req, resp) ->
     email = req.body.email
     password = req.body.password
     if email? and password?
@@ -72,7 +72,7 @@ ctrl.init = (app, db) ->
 
 
 
-  app.get('/user/list', (req,resp) ->
+  app.get('/node/user/list', (req,resp) ->
     db.collection "users", (err, collection) =>
       collection.find({'active':1}).count((err, count) ->
         if count > 0
@@ -92,7 +92,7 @@ ctrl.init = (app, db) ->
       )
   )
 
-  app.get('/user/:email', (req, resp) ->
+  app.get('/node/user/:email', (req, resp) ->
     email = req.params.email
     if email?
       db.collection "users", (err, collection) =>

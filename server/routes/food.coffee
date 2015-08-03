@@ -3,7 +3,7 @@ Food = require '../models/Food'
 Category = require '../models/Category'
 
 ctrl.init = (app, db) ->
-  app.post('/food/add', (req, resp) ->
+  app.post('/node/food/add', (req, resp) ->
     name = req.body.name
     category = req.body.category
     image = req.body.image
@@ -42,7 +42,7 @@ ctrl.init = (app, db) ->
       )
   )
 
-  app.get('/food/delete/:name', (req, resp) ->
+  app.get('/node/food/delete/:name', (req, resp) ->
     name = req.params.name
     db.collection "foods", (err, collection) =>
       collection.find({'name':name, 'active':1}).count((err, count) ->
