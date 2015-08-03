@@ -42,6 +42,10 @@ ctrl.init = (app, db) ->
       collection.find({'active':1}).count((err, count) ->
         if count > 0
           collection.find({'active':1}).toArray((err, categories) ->
+            for category in categories
+              console.log category
+
+
             resp.send(
               code: 400,
               message: "fail",

@@ -40,31 +40,34 @@
         self.categories = [[dict objectForKey:@"categories"] mutableCopy];
         
         
-        for (NSDictionary *categoryDict in self.categories) {
-            [manager getFoods:[categoryDict objectForKey:@"name"] success:^(NSURLSessionDataTask *task, id responseObject) {
-                CategoryM *category = [CategoryM new];
-                category.name = [categoryDict objectForKey:@"name"];
-                category.foods = [NSMutableArray new];
+        
+        __block int count = 0;
+        
+        for (NSDictionary *catDict in self.categories) {
+            [manager getFoods:[catDict objectForKey:@"name"] success:^(NSURLSessionDataTask *task, id responseObject) {
                 
-                NSMutableArray *foodArray = [responseObject objectForKey:@"foods"];
                 
-                for (NSDictionary *foodDict in foodArray) {
-                    Food *food = [Food new];
-                    food.name = [foodDict objectForKey:@"name"];
-                    [category.foods addObject:food];
+                NSDictionary *foodDict = responseObject;
+                NSArray *foodArray = [foodDict objectForKey:@"foods"];
+                count++;
+                NSMutableDictionary *testDict = [[self.categories objectAtIndex:count-1] mutableCopy];
+                
+                [testDict setValue:foodArray forKey:@"foods"];
+                
+                [self.categories setObject:testDict atIndexedSubscript:[self.categories indexOfObject:catDict]];
+                
+               
+                if(count == [self.categories count]) {
                     
+                    NSLog(@"Categories: %@", self.categories);
+                    [self.loading stopAnimating];
+                    [self.tableView reloadData];
                 }
                 
-                [self.mCategories addObject:category];
-                
-                [self.loading stopAnimating];
-                [self.tableView reloadData];
-                
             } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                 NSLog(@"Error: %@",error);
+                NSLog(@"Error: %@",error);
             }];
         }
-        
         
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -76,12 +79,8 @@
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (_mCategories) {
-        CategoryM *category = [self.mCategories objectAtIndex:section];
-        return [category.foods count];
-    } else {
-        return 0;
-    }
+    NSDictionary *catDict = [self.categories objectAtIndex:section];
+    return [[catDict objectForKey:@"foods"] count];
 }
 
 - (NSString *)tableView:(nonnull UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -98,8 +97,10 @@
 - (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CategoryCell"];
-    NSMutableDictionary *dict = [self.categories objectAtIndex:indexPath.row];
-    cell.textLabel.text = [dict objectForKey:@"name"];
+    NSMutableDictionary *dict = [self.categories objectAtIndex:indexPath.section];
+    NSArray *foodArray = [dict objectForKey:@"foods"];
+    NSDictionary *foodDict = [foodArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = [foodDict objectForKey:@"name"];
     return cell;
 }
 
