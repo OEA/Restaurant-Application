@@ -114,3 +114,16 @@ ctrl.init = (app, db) ->
           )
       )
   )
+
+  app.get('/node/category/count/:name', (req, resp) ->
+    name = req.params.name
+    db.collection "categories", (err, collection) =>
+      collection.find({'name':name, 'active':1}).count((err, count) ->
+        resp.send(
+          code: 200,
+          message: "success",
+          name: name,
+          count: count
+        )
+      )
+  )
