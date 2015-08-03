@@ -43,8 +43,8 @@ ctrl.init = (app, db) ->
         if count > 0
           collection.find({'active':1}).toArray((err, categories) ->
             resp.send(
-              code: 200,
-              message: "success",
+              code: 400,
+              message: "fail",
               categories: categories
             )
           )
@@ -112,18 +112,5 @@ ctrl.init = (app, db) ->
             message: "fail",
             detail: "There is no active category which you give."
           )
-      )
-  )
-
-  app.get('/node/category/count/:name', (req, resp) ->
-    name = req.params.name
-    db.collection "categories", (err, collection) =>
-      collection.find({'name':name, 'active':1}).count((err, count) ->
-        resp.send(
-          code: 200,
-          message: "success",
-          name: name,
-          count: count
-        )
       )
   )
