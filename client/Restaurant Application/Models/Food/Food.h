@@ -17,3 +17,10 @@
 @property (strong, nonatomic) NSNumber *price;
 
 @end
+
+
+
+@protocol FoodSelectionDelegate <NSObject>
+@required
+-(void)selectedFood:(Food *)newFood;
+@end

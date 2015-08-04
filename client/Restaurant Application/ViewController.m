@@ -41,4 +41,9 @@
     }
 }
 
+- (void)selectedFood:(Food *)newFood
+{
+    [self setFood:newFood];
+}
+
 @end

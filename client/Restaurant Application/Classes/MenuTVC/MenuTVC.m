@@ -9,12 +9,9 @@
 #import "MenuTVC.h"
 #import "CategoryManager.h"
 #import "CategoryM.h"
-#import "Food.h"
 
 @interface MenuTVC()
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loading;
-@property (strong, nonatomic) NSMutableArray *categories;
-@property (strong, nonatomic) NSMutableArray *mCategories;
 @end
 @implementation MenuTVC
 
@@ -23,8 +20,6 @@
     [super viewDidLoad];
     if (!_categories)
         _categories = [NSMutableArray new];
-    if (!_mCategories)
-        _mCategories = [NSMutableArray new];
     [self.loading startAnimating];
     
 }
@@ -58,8 +53,18 @@
                 
                
                 if(count == [self.categories count]) {
+                    NSMutableDictionary *dict = [self.categories objectAtIndex:0];
+                    NSArray *foodArray = [dict objectForKey:@"foods"];
+                    NSDictionary *foodDict = [foodArray objectAtIndex:0];
+                    Food *food = [Food new];
+                    food.name = [foodDict objectForKey:@"name"];
+                    food.category = [foodDict objectForKey:@"category"];
+                    food.image = [foodDict objectForKey:@"image"];
+                    food.price = [foodDict objectForKey:@"price"];
+                    if (_delegate) {
+                        [_delegate selectedFood:food];
+                    }
                     
-                    NSLog(@"Categories: %@", self.categories);
                     [self.loading stopAnimating];
                     [self.tableView reloadData];
                 }
@@ -102,6 +107,21 @@
     NSDictionary *foodDict = [foodArray objectAtIndex:indexPath.row];
     cell.textLabel.text = [foodDict objectForKey:@"name"];
     return cell;
+}
+
+- (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    NSMutableDictionary *dict = [self.categories objectAtIndex:indexPath.section];
+    NSArray *foodArray = [dict objectForKey:@"foods"];
+    NSDictionary *foodDict = [foodArray objectAtIndex:indexPath.row];
+    Food *food = [Food new];
+    food.name = [foodDict objectForKey:@"name"];
+    food.category = [foodDict objectForKey:@"category"];
+    food.image = [foodDict objectForKey:@"image"];
+    food.price = [foodDict objectForKey:@"price"];
+    if (_delegate) {
+        [_delegate selectedFood:food];
+    }
 }
 
 @end

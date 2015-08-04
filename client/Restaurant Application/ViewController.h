@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Food.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <FoodSelectionDelegate>
 @property (strong ,nonatomic) Food *food;
 @end
 
