@@ -9,9 +9,11 @@
 #import "MenuTVC.h"
 #import "CategoryManager.h"
 #import "CategoryM.h"
+#import "MenuCell.h"
 
-@interface MenuTVC()
+@interface MenuTVC()<MenuCellDelegate>
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loading;
+@property (nonatomic, assign) id<MenuCellDelegate> menuDelegate;
 @end
 @implementation MenuTVC
 
@@ -53,18 +55,7 @@
                 
                
                 if(count == [self.categories count]) {
-                    NSMutableDictionary *dict = [self.categories objectAtIndex:0];
-                    NSArray *foodArray = [dict objectForKey:@"foods"];
-                    NSDictionary *foodDict = [foodArray objectAtIndex:0];
-                    Food *food = [Food new];
-                    food.name = [foodDict objectForKey:@"name"];
-                    food.category = [foodDict objectForKey:@"category"];
-                    food.image = [foodDict objectForKey:@"image"];
-                    food.price = [foodDict objectForKey:@"price"];
-                    if (_delegate) {
-                        [_delegate selectedFood:food];
-                    }
-                    
+                   
                     [self.loading stopAnimating];
                     [self.tableView reloadData];
                 }
@@ -79,6 +70,14 @@
         NSLog(@"Error: %@",error);
     }];
 
+}
+
+- (void)addButtonTappedOnTableViewCell:(MenuCell *)cell
+{
+    
+    
+    NSIndexPath * indexPath = [self.tableView indexPathForCell: cell];
+    NSLog(@"cell: %@",indexPath);
 }
 
 
@@ -101,16 +100,21 @@
 
 - (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CategoryCell"];
+    MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CategoryCell"];
     NSMutableDictionary *dict = [self.categories objectAtIndex:indexPath.section];
     NSArray *foodArray = [dict objectForKey:@"foods"];
     NSDictionary *foodDict = [foodArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = [foodDict objectForKey:@"name"];
+    cell.foodName.text = [foodDict objectForKey:@"name"];
+    cell.foodQuantityPrice.text = [NSString stringWithFormat:@"%@ TL",[foodDict objectForKey:@"price"]];
+    [cell.addButton addTarget:self action:@selector(addButtonTappedOnTableViewCell:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
-- (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
-{
+- (IBAction)addFoodToBasket:(id)sender {
+
+    
+    MenuCell *cell = sender;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     NSMutableDictionary *dict = [self.categories objectAtIndex:indexPath.section];
     NSArray *foodArray = [dict objectForKey:@"foods"];
     NSDictionary *foodDict = [foodArray objectAtIndex:indexPath.row];
@@ -122,6 +126,8 @@
     if (_delegate) {
         [_delegate selectedFood:food];
     }
+
 }
+
 
 @end

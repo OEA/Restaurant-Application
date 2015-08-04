@@ -57,7 +57,6 @@
 - (IBAction)viewTapped:(UITapGestureRecognizer *)sender {
     
     UITableView *view = (UITableView *)sender.view;
-    NSLog(@"%@", view.class);
     if (![sender isKindOfClass:[UITableView class]]) {
        [self refreshConstraints];
     }
