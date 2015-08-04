@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Food.h"
+#import "Order.h"
 
 @interface ViewController : UIViewController <FoodSelectionDelegate>
 @property (strong ,nonatomic) Food *food;

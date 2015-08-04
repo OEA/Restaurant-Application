@@ -8,10 +8,13 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()<UIGestureRecognizerDelegate>
+@interface ViewController ()<UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomSpaceBasket;
 @property (weak, nonatomic) IBOutlet UILabel *foodTitle;
 @property (weak, nonatomic) IBOutlet UIView *cartView;
+@property (weak, nonatomic) IBOutlet UILabel *basketLabel;
+@property (strong, nonatomic) NSMutableArray *orders;
+@property (weak, nonatomic) IBOutlet UITableView *basketTableVew;
 @end
 
 @implementation ViewController
@@ -19,8 +22,18 @@
 - (void)viewDidLoad {
     [self refreshUI];
     [super viewDidLoad];
-    self.cartView.frame = CGRectMake(0, self.view.frame.size.height - 50, self.cartView.frame.size.width, self.view.frame.size.height );
     _constraintBottomSpaceBasket.constant = 50 -self.view.frame.size.height;
+    
+    self.basketTableVew.dataSource = self;
+    self.basketTableVew.delegate = self;
+}
+
+- (NSMutableArray *)orders
+{
+    if(!_orders) {
+        _orders = [NSMutableArray new];
+    }
+    return _orders;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,17 +43,38 @@
 
 - (void)refreshUI
 {
+    
     self.foodTitle.text = self.food.name;
+    if ([self.orders count] > 0) {
+        self.basketLabel.text = [NSString stringWithFormat:@"%lu adet sipariş mevcut.", (unsigned long)[self.orders count]];
+    } else {
+        //doNothin'
+    }
+    
+    [self.basketTableVew reloadData];
 }
 
 - (IBAction)viewTapped:(UITapGestureRecognizer *)sender {
+    
+    UITableView *view = (UITableView *)sender.view;
+    NSLog(@"%@", view.class);
+    if (![sender isKindOfClass:[UITableView class]]) {
+       [self refreshConstraints];
+    }
+    
+    
+}
+
+- (void)refreshConstraints
+{
     if (self.cartView.frame.origin.y == 0) {
+        
         _constraintBottomSpaceBasket.constant = 50 -self.view.frame.size.height;
     } else {
         _constraintBottomSpaceBasket.constant = 0;
     }
     
-    [UIView animateWithDuration:0.75 animations:^{
+    [UIView animateWithDuration:0.5 animations:^{
         [self.view layoutIfNeeded];
     } completion:nil];
 }
@@ -52,13 +86,38 @@
         _food = food;
         
         //Update the UI to reflect the new monster on the iPad.
-        [self refreshUI];
     }
 }
 
 - (void)selectedFood:(Food *)newFood
 {
     [self setFood:newFood];
+    [self addOrder:newFood];
+    [self refreshUI];
+}
+
+- (void)addOrder:(Food *)food
+{
+    Order *order = [Order new];
+    order.food = food.name;
+    order.user = @"test";
+    order.price = food.price;
+    order.quantity = @(1);
+    [self.orders addObject:order];
+}
+
+- (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"basketCell"];
+    Order *order = [self.orders objectAtIndex:indexPath.row];
+    cell.textLabel.text = order.food;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ TL",order.price];
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.orders count];
 }
 
 @end
