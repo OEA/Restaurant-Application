@@ -43,7 +43,7 @@ ctrl.init = (app, db) ->
         if count > 0
           collection.find({'active':1}).toArray((err, categories) ->
             for category in categories
-              console.log category
+              category
 
 
             resp.send(

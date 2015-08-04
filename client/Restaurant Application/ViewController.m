@@ -8,8 +8,10 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController ()<UIGestureRecognizerDelegate>
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomSpaceBasket;
 @property (weak, nonatomic) IBOutlet UILabel *foodTitle;
+@property (weak, nonatomic) IBOutlet UIView *cartView;
 @end
 
 @implementation ViewController
@@ -17,7 +19,8 @@
 - (void)viewDidLoad {
     [self refreshUI];
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.cartView.frame = CGRectMake(0, self.view.frame.size.height - 50, self.cartView.frame.size.width, self.view.frame.size.height );
+    _constraintBottomSpaceBasket.constant = 50 -self.view.frame.size.height;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,6 +31,18 @@
 - (void)refreshUI
 {
     self.foodTitle.text = self.food.name;
+}
+
+- (IBAction)viewTapped:(UITapGestureRecognizer *)sender {
+    if (self.cartView.frame.origin.y == 0) {
+        _constraintBottomSpaceBasket.constant = 50 -self.view.frame.size.height;
+    } else {
+        _constraintBottomSpaceBasket.constant = 0;
+    }
+    
+    [UIView animateWithDuration:0.75 animations:^{
+        [self.view layoutIfNeeded];
+    } completion:nil];
 }
 
 -(void)setFood:(Food *)food

@@ -69,7 +69,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjs-7j-qpE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjs-7j-qpE">
                                 <rect key="frame" x="215" y="72" width="171" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="2Lm-Hb-QNC"/>
@@ -79,19 +79,60 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFX-ih-sMv">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sepetiniz Boş" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zR-rN-sce">
+                                        <rect key="frame" x="203" y="0.0" width="195" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="NrM-np-La6"/>
+                                            <constraint firstAttribute="width" constant="195" id="iaj-xD-h3i"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOQ-h9-0G7">
+                                        <rect key="frame" x="476" y="8" width="116" height="30"/>
+                                        <state key="normal" title="Siparişi Tamamla"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="7zR-rN-sce" firstAttribute="top" secondItem="ZFX-ih-sMv" secondAttribute="top" id="Ahd-cp-a4q"/>
+                                    <constraint firstItem="7zR-rN-sce" firstAttribute="centerX" secondItem="ZFX-ih-sMv" secondAttribute="centerX" id="Bgk-IB-poZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="NOQ-h9-0G7" secondAttribute="trailing" constant="8" id="I0n-NM-d7e"/>
+                                    <constraint firstItem="NOQ-h9-0G7" firstAttribute="top" secondItem="ZFX-ih-sMv" secondAttribute="top" constant="8" id="s9l-6h-0H1"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="GAZ-Do-iul" appends="YES" id="rzs-2y-Pw6"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yjs-7j-qpE" firstAttribute="top" secondItem="dLz-Qs-cJR" secondAttribute="bottom" constant="8" symbolic="YES" id="nz5-QH-b5s"/>
+                            <constraint firstItem="yjs-7j-qpE" firstAttribute="top" secondItem="dLz-Qs-cJR" secondAttribute="bottom" constant="52" id="DDD-yt-E2l"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZFX-ih-sMv" secondAttribute="trailing" constant="-20" id="GeY-JD-QsB"/>
+                            <constraint firstItem="ZFX-ih-sMv" firstAttribute="height" secondItem="nF2-ZA-xaP" secondAttribute="height" id="aBU-GA-Xql"/>
+                            <constraint firstItem="9yy-YV-vwi" firstAttribute="top" secondItem="ZFX-ih-sMv" secondAttribute="bottom" id="aBq-RJ-7el"/>
+                            <constraint firstItem="ZFX-ih-sMv" firstAttribute="leading" secondItem="nF2-ZA-xaP" secondAttribute="leadingMargin" constant="-20" id="eOA-xm-WmH"/>
                             <constraint firstItem="yjs-7j-qpE" firstAttribute="centerX" secondItem="nF2-ZA-xaP" secondAttribute="centerX" id="vr6-pa-Iy8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Hjy-PC-cEU"/>
                     <connections>
+                        <outlet property="cartView" destination="ZFX-ih-sMv" id="9tT-kS-sIH"/>
+                        <outlet property="constraintBottomSpaceBasket" destination="aBq-RJ-7el" id="Qhp-4C-acm"/>
                         <outlet property="foodTitle" destination="yjs-7j-qpE" id="cR2-vK-Mmv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vPT-p6-Bct" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="GAZ-Do-iul">
+                    <connections>
+                        <action selector="viewTapped:" destination="I8C-Pv-Jig" id="LfH-oR-78h"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1914" y="265"/>
         </scene>
@@ -203,7 +244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4um-g4-imh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1114" y="688"/>
+            <point key="canvasLocation" x="1094" y="680"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tpW-wC-LK4">
