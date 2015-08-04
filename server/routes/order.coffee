@@ -35,9 +35,9 @@ ctrl.init = (app, db) ->
   app.get('/node/order/get/:user', (req, resp) ->
     user = req.params.user
     db.collection "orders", (err, collection) =>
-      collection.find({'user':user, 'active':1}).count((err, count) ->
+      collection.find({'user':user}).count((err, count) ->
         if count > 0
-          collection.find({'user':user,'active':1}).toArray((err, orders) ->
+          collection.find({'user':user}).toArray((err, orders) ->
             resp.send(
               code: 200,
               message: "success",
