@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17AC2E5A1B7087420014980A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17AC2E591B7087420014980A /* Assets.xcassets */; };
 		17FECF0A1B6F2D2D00791B5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FECF091B6F2D2D00791B5F /* main.m */; };
 		17FECF0D1B6F2D2D00791B5F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FECF0C1B6F2D2D00791B5F /* AppDelegate.m */; };
 		17FECF101B6F2D2D00791B5F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FECF0F1B6F2D2D00791B5F /* ViewController.m */; };
 		17FECF131B6F2D2D00791B5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17FECF111B6F2D2D00791B5F /* Main.storyboard */; };
-		17FECF151B6F2D2D00791B5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17FECF141B6F2D2D00791B5F /* Assets.xcassets */; };
 		17FECF181B6F2D2D00791B5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17FECF161B6F2D2D00791B5F /* LaunchScreen.storyboard */; };
 		17FECF231B6F2D2D00791B5F /* Restaurant_ApplicationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FECF221B6F2D2D00791B5F /* Restaurant_ApplicationTests.m */; };
 		17FECF331B6F30EC00791B5F /* MenuTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FECF321B6F30EC00791B5F /* MenuTVC.m */; };
@@ -33,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		0EC50C2768975E43F5FDA560 /* Pods-Restaurant Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restaurant Application.release.xcconfig"; path = "Pods/Target Support Files/Pods-Restaurant Application/Pods-Restaurant Application.release.xcconfig"; sourceTree = "<group>"; };
+		17AC2E591B7087420014980A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		17FECF051B6F2D2D00791B5F /* Restaurant Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Restaurant Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17FECF091B6F2D2D00791B5F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		17FECF0B1B6F2D2D00791B5F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -40,7 +41,6 @@
 		17FECF0E1B6F2D2D00791B5F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		17FECF0F1B6F2D2D00791B5F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		17FECF121B6F2D2D00791B5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		17FECF141B6F2D2D00791B5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17FECF171B6F2D2D00791B5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17FECF191B6F2D2D00791B5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17FECF1E1B6F2D2D00791B5F /* Restaurant ApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Restaurant ApplicationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,10 +105,10 @@
 				17FECF2D1B6F309E00791B5F /* Classes */,
 				17FECF0B1B6F2D2D00791B5F /* AppDelegate.h */,
 				17FECF0C1B6F2D2D00791B5F /* AppDelegate.m */,
+				17AC2E591B7087420014980A /* Assets.xcassets */,
 				17FECF0E1B6F2D2D00791B5F /* ViewController.h */,
 				17FECF0F1B6F2D2D00791B5F /* ViewController.m */,
 				17FECF111B6F2D2D00791B5F /* Main.storyboard */,
-				17FECF141B6F2D2D00791B5F /* Assets.xcassets */,
 				17FECF161B6F2D2D00791B5F /* LaunchScreen.storyboard */,
 				17FECF191B6F2D2D00791B5F /* Info.plist */,
 				17FECF081B6F2D2D00791B5F /* Supporting Files */,
@@ -302,7 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17FECF181B6F2D2D00791B5F /* LaunchScreen.storyboard in Resources */,
-				17FECF151B6F2D2D00791B5F /* Assets.xcassets in Resources */,
+				17AC2E5A1B7087420014980A /* Assets.xcassets in Resources */,
 				17FECF131B6F2D2D00791B5F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
