@@ -72,7 +72,7 @@ ctrl.init = (app, db) ->
             db.collection "foods", (err, foodCollection) =>
               foodCollection.find({'category':name}).count((err, foodCount) ->
                 if foodCount > 0
-                  foodCollection.update({'category':name},{$set:{'category':update}})
+                  foodCollection.update({'category':name},{$set:{'category':update}},{w:1, multi: true})
                 else
                   #doNothing
               )
