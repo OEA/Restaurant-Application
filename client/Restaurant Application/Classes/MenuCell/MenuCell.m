@@ -8,15 +8,18 @@
 
 #import "MenuCell.h"
 
-@interface MenuCell()<MenuCellDelegate>
+@interface MenuCell()
 
 @end
 
 @implementation MenuCell
 
-- (void)addButtonTappedOnTableViewCell:(MenuCell *)cell
+-(IBAction)buttonPressed:(id)sender
 {
-    
+    if ([self.delegate respondsToSelector:@selector(menuCellAddButtonTappedOnTableViewCell:)])
+    {
+        [self.delegate menuCellAddButtonTappedOnTableViewCell:self];
+    }
 }
 
 @end

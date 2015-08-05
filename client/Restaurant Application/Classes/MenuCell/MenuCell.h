@@ -8,15 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
+@class MenuCell;
+
+@protocol MenuCellDelegate <NSObject>
+
+- (void) menuCellAddButtonTappedOnTableViewCell:(MenuCell *)cell;
+
+@end
 
 
 @interface MenuCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *foodName;
 @property (weak, nonatomic) IBOutlet UILabel *foodQuantityPrice;
 @property (weak, nonatomic) IBOutlet UILabel *foodQuantity;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
-@end
 
-@protocol MenuCellDelegate
-- (void) addButtonTappedOnTableViewCell: (MenuCell *) cell;
+@property (nonatomic,strong) NSIndexPath* indexPath;
+
+@property (weak, nonatomic) id <MenuCellDelegate> delegate;
+
 @end

@@ -72,15 +72,6 @@
 
 }
 
-- (void)addButtonTappedOnTableViewCell:(MenuCell *)cell
-{
-    
-    
-    NSIndexPath * indexPath = [self.tableView indexPathForCell: cell];
-    NSLog(@"cell: %@",indexPath);
-}
-
-
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSDictionary *catDict = [self.categories objectAtIndex:section];
@@ -102,22 +93,22 @@
 {
     MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CategoryCell"];
     NSMutableDictionary *dict = [self.categories objectAtIndex:indexPath.section];
+    
+    cell.indexPath = indexPath;
+    cell.delegate = self;
+    
     NSArray *foodArray = [dict objectForKey:@"foods"];
     NSDictionary *foodDict = [foodArray objectAtIndex:indexPath.row];
     cell.foodName.text = [foodDict objectForKey:@"name"];
     cell.foodQuantityPrice.text = [NSString stringWithFormat:@"%@ TL",[foodDict objectForKey:@"price"]];
-    [cell.addButton addTarget:self action:@selector(addButtonTappedOnTableViewCell:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
-- (IBAction)addFoodToBasket:(id)sender {
-
-    
-    MenuCell *cell = sender;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    NSMutableDictionary *dict = [self.categories objectAtIndex:indexPath.section];
+-(void)menuCellAddButtonTappedOnTableViewCell:(MenuCell *)cell
+{
+    NSMutableDictionary *dict = [self.categories objectAtIndex:cell.indexPath.section];
     NSArray *foodArray = [dict objectForKey:@"foods"];
-    NSDictionary *foodDict = [foodArray objectAtIndex:indexPath.row];
+    NSDictionary *foodDict = [foodArray objectAtIndex:cell.indexPath.row];
     Food *food = [Food new];
     food.name = [foodDict objectForKey:@"name"];
     food.category = [foodDict objectForKey:@"category"];
@@ -126,8 +117,8 @@
     if (_delegate) {
         [_delegate selectedFood:food];
     }
-
 }
+
 
 
 @end

@@ -55,6 +55,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9N-0I-RV0">
                                             <rect key="frame" x="562" y="7" width="30" height="30"/>
                                             <state key="normal" title="Ekle"/>
+                                            <connections>
+                                                <action selector="buttonPressed:" destination="Xxr-yr-L9p" eventType="touchUpInside" id="bA7-qB-390"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxf-XK-Ae1">
                                             <rect key="frame" x="141" y="7" width="30" height="30"/>
