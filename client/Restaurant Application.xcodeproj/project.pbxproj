@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		17AC2E5A1B7087420014980A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17AC2E591B7087420014980A /* Assets.xcassets */; };
+		17BC80AF1B72030F007B1311 /* BasketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BC80AE1B72030F007B1311 /* BasketCell.m */; };
 		17D8F5CD1B70D4AA00D21141 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D8F5CC1B70D4AA00D21141 /* Order.m */; };
 		17EA63F11B70EA5A004EAEC7 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EA63F01B70EA5A004EAEC7 /* MenuCell.m */; };
 		17FECF0A1B6F2D2D00791B5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FECF091B6F2D2D00791B5F /* main.m */; };
@@ -36,6 +37,8 @@
 /* Begin PBXFileReference section */
 		0EC50C2768975E43F5FDA560 /* Pods-Restaurant Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restaurant Application.release.xcconfig"; path = "Pods/Target Support Files/Pods-Restaurant Application/Pods-Restaurant Application.release.xcconfig"; sourceTree = "<group>"; };
 		17AC2E591B7087420014980A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		17BC80AD1B72030F007B1311 /* BasketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasketCell.h; sourceTree = "<group>"; };
+		17BC80AE1B72030F007B1311 /* BasketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasketCell.m; sourceTree = "<group>"; };
 		17D8F5CB1B70D4AA00D21141 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
 		17D8F5CC1B70D4AA00D21141 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		17EA63EF1B70EA5A004EAEC7 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
@@ -83,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17BC80AC1B7202B2007B1311 /* BasketCell */ = {
+			isa = PBXGroup;
+			children = (
+				17BC80AD1B72030F007B1311 /* BasketCell.h */,
+				17BC80AE1B72030F007B1311 /* BasketCell.m */,
+			);
+			path = BasketCell;
+			sourceTree = "<group>";
+		};
 		17EA63EE1B70EA3C004EAEC7 /* MenuCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +163,7 @@
 		17FECF2D1B6F309E00791B5F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				17BC80AC1B7202B2007B1311 /* BasketCell */,
 				17EA63EE1B70EA3C004EAEC7 /* MenuCell */,
 				17FECF301B6F30CB00791B5F /* MenuTVC */,
 			);
@@ -381,6 +394,7 @@
 				17FECF331B6F30EC00791B5F /* MenuTVC.m in Sources */,
 				17D8F5CD1B70D4AA00D21141 /* Order.m in Sources */,
 				17FECF0A1B6F2D2D00791B5F /* main.m in Sources */,
+				17BC80AF1B72030F007B1311 /* BasketCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

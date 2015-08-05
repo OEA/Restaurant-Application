@@ -113,8 +113,19 @@
     food.category = [foodDict objectForKey:@"category"];
     food.image = [foodDict objectForKey:@"image"];
     food.price = [foodDict objectForKey:@"price"];
+//
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    
+    NSNumber *quantityNumber = [numberFormatter numberFromString:cell.foodQuantity.text];
+    NSNumber *quantityPrice = [NSNumber numberWithFloat:[quantityNumber floatValue] * [food.price floatValue]];
+    Order *order = [Order new];
+    order.food = food.name;
+    order.user = @"test";
+    order.price = quantityPrice;
+    order.quantity = quantityNumber;
     if (_delegate) {
-        [_delegate selectedFood:food];
+        [_delegate selectedOrder:order];
     }
 }
 
@@ -154,6 +165,22 @@
         }
         
     }];
+}
+
+- (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    
+    NSMutableDictionary *dict = [self.categories objectAtIndex:indexPath.section];
+    NSArray *foodArray = [dict objectForKey:@"foods"];
+    NSDictionary *foodDict = [foodArray objectAtIndex:indexPath.row];
+    Food *food = [Food new];
+    food.name = [foodDict objectForKey:@"name"];
+    food.category = [foodDict objectForKey:@"category"];
+    food.image = [foodDict objectForKey:@"image"];
+    food.price = [foodDict objectForKey:@"price"];
+    if (_delegate) {
+        [_delegate selectFood:food];
+    }
 }
 
 @end

@@ -10,7 +10,7 @@
 #import "Food.h"
 #import "Order.h"
 
-@interface ViewController : UIViewController <FoodSelectionDelegate>
+@interface ViewController : UIViewController <OrderSelectionDelegate>
 @property (strong ,nonatomic) Food *food;
 @end
 

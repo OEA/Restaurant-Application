@@ -186,6 +186,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHf-Rs-MVh">
                                                 <rect key="frame" x="8" y="12" width="53" height="30"/>
                                                 <state key="normal" title="Temizle"/>
+                                                <connections>
+                                                    <action selector="clearOrders:" destination="I8C-Pv-Jig" eventType="touchUpInside" id="9fj-s8-95l"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -208,7 +211,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOQ-h9-0G7">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOQ-h9-0G7">
                                         <rect key="frame" x="476" y="8" width="116" height="30"/>
                                         <state key="normal" title="Siparişi Tamamla"/>
                                     </button>
@@ -219,29 +222,70 @@
                                             <constraint firstAttribute="height" constant="385" id="yJ6-Nc-2vk"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="basketCell" textLabel="9G8-QB-p3Y" detailTextLabel="YUF-OP-KW0" style="IBUITableViewCellStyleSubtitle" id="JEI-qL-DSK">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="basketCell" id="JEI-qL-DSK" customClass="BasketCell">
                                                 <rect key="frame" x="0.0" y="22" width="600" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JEI-qL-DSK" id="VIm-eH-yIn">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9G8-QB-p3Y">
-                                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Porsiyon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4M-PP-4QG">
+                                                            <rect key="frame" x="0.0" y="1" width="46" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="3Vs-pb-bYr"/>
+                                                                <constraint firstAttribute="width" constant="46" id="awD-td-JFJ"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YUF-OP-KW0">
-                                                            <rect key="frame" x="15" y="25.5" width="41" height="13.5"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bql-P1-WtJ">
+                                                            <rect key="frame" x="2" y="14.5" width="42" height="20.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20.5" id="Gqc-Ku-O5r"/>
+                                                                <constraint firstAttribute="width" constant="42" id="Hwg-Ip-HLm"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQU-wC-cwf">
+                                                            <rect key="frame" x="47" y="4" width="180" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="180" id="9o3-Yl-cXd"/>
+                                                                <constraint firstAttribute="height" constant="21" id="Nkk-yX-fNP"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mK-1k-MkT">
+                                                            <rect key="frame" x="47" y="18" width="65" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="65" id="Kzz-Tj-rZc"/>
+                                                                <constraint firstAttribute="height" constant="21" id="dmd-O2-Ai5"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="bql-P1-WtJ" firstAttribute="top" secondItem="f4M-PP-4QG" secondAttribute="bottom" constant="-7.5" id="Gl7-h0-vIZ"/>
+                                                        <constraint firstItem="bql-P1-WtJ" firstAttribute="leading" secondItem="VIm-eH-yIn" secondAttribute="leadingMargin" constant="-6" id="I1B-ma-qCL"/>
+                                                        <constraint firstItem="OQU-wC-cwf" firstAttribute="top" secondItem="VIm-eH-yIn" secondAttribute="topMargin" constant="-4" id="I6E-lm-UeE"/>
+                                                        <constraint firstItem="f4M-PP-4QG" firstAttribute="leading" secondItem="VIm-eH-yIn" secondAttribute="leadingMargin" constant="-8" id="ISL-Cr-KmH"/>
+                                                        <constraint firstItem="OQU-wC-cwf" firstAttribute="leading" secondItem="f4M-PP-4QG" secondAttribute="trailing" constant="1" id="Ksp-UU-jZM"/>
+                                                        <constraint firstItem="6mK-1k-MkT" firstAttribute="top" secondItem="OQU-wC-cwf" secondAttribute="bottom" constant="-7" id="S5E-2R-0aq"/>
+                                                        <constraint firstItem="f4M-PP-4QG" firstAttribute="top" secondItem="VIm-eH-yIn" secondAttribute="topMargin" constant="-7" id="mwD-8Z-JZF"/>
+                                                        <constraint firstItem="6mK-1k-MkT" firstAttribute="leading" secondItem="bql-P1-WtJ" secondAttribute="trailing" constant="3" id="uUp-l1-7YE"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="foodPrice" destination="6mK-1k-MkT" id="Ru4-of-i9k"/>
+                                                    <outlet property="foodQuantity" destination="bql-P1-WtJ" id="L9H-au-rHL"/>
+                                                    <outlet property="foodTitle" destination="OQU-wC-cwf" id="zqq-jT-L5O"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -280,6 +324,7 @@
                         <outlet property="basketLabel" destination="7zR-rN-sce" id="Pg1-jV-QQH"/>
                         <outlet property="basketTableVew" destination="f3t-aH-Bdq" id="QcF-2p-UK9"/>
                         <outlet property="cartView" destination="ZFX-ih-sMv" id="9tT-kS-sIH"/>
+                        <outlet property="completeOrderButton" destination="NOQ-h9-0G7" id="cDd-3R-ChJ"/>
                         <outlet property="constraintBottomSpaceBasket" destination="aBq-RJ-7el" id="Qhp-4C-acm"/>
                         <outlet property="foodTitle" destination="yjs-7j-qpE" id="cR2-vK-Mmv"/>
                     </connections>

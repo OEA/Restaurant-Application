@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "BasketCell.h"
 
 @interface ViewController ()<UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomSpaceBasket;
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *basketLabel;
 @property (strong, nonatomic) NSMutableArray *orders;
 @property (weak, nonatomic) IBOutlet UITableView *basketTableVew;
+@property (weak, nonatomic) IBOutlet UIButton *completeOrderButton;
 @end
 
 @implementation ViewController
@@ -26,6 +28,10 @@
     
     self.basketTableVew.dataSource = self;
     self.basketTableVew.delegate = self;
+}
+- (IBAction)clearOrders:(id)sender {
+    [self.orders removeAllObjects];
+    [self refreshUI];
 }
 
 - (NSMutableArray *)orders
@@ -47,8 +53,10 @@
     self.foodTitle.text = self.food.name;
     if ([self.orders count] > 0) {
         self.basketLabel.text = [NSString stringWithFormat:@"%lu adet sipariş mevcut.", (unsigned long)[self.orders count]];
+        self.completeOrderButton.enabled = YES;
     } else {
-        //doNothin'
+        self.basketLabel.text = @"Sepetiniz Boş";
+        self.completeOrderButton.enabled = NO;
     }
     
     [self.basketTableVew reloadData];
@@ -88,35 +96,41 @@
     }
 }
 
-- (void)selectedFood:(Food *)newFood
+- (void)selectedOrder:(Order *)order
 {
-    [self setFood:newFood];
-    [self addOrder:newFood];
+    [self addOrder:order];
     [self refreshUI];
 }
 
-- (void)addOrder:(Food *)food
+-(void)selectFood:(Food *)food
 {
-    Order *order = [Order new];
-    order.food = food.name;
-    order.user = @"test";
-    order.price = food.price;
-    order.quantity = @(1);
+    self.food = food;
+    self.foodTitle.text = food.name;
+}
+
+- (void)addOrder:(Order *)order
+{
     [self.orders addObject:order];
 }
 
 - (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"basketCell"];
+    BasketCell *cell = [tableView dequeueReusableCellWithIdentifier:@"basketCell"];
     Order *order = [self.orders objectAtIndex:indexPath.row];
-    cell.textLabel.text = order.food;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ TL",order.price];
+    cell.foodTitle.text = order.food;
+    cell.foodPrice.text = [NSString stringWithFormat:@"%@ TL",order.price];
+    cell.foodQuantity.text = [NSString stringWithFormat:@"%@",order.quantity];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.orders count];
+}
+
+- (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    NSLog(@"test");
 }
 
 @end

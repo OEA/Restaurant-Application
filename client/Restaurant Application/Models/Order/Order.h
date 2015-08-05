@@ -7,10 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Food.h"
 
 @interface Order : NSObject
 @property (strong, nonatomic) NSString *user;
 @property (strong, nonatomic) NSString *food;
 @property (strong, nonatomic) NSNumber *quantity;
 @property (strong, nonatomic) NSNumber *price;
+@end
+
+
+@protocol OrderSelectionDelegate <NSObject>
+@required
+-(void)selectedOrder:(Order *)order;
+-(void)selectFood:(Food *)food;
 @end

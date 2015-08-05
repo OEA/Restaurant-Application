@@ -92,5 +92,5 @@ ctrl.init = (app, db) ->
           detail: "Cleared orders succesfully."
         )
       )
-      
+
   )

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Food.h"
+#import "Order.h"
 
 @interface MenuTVC : UITableViewController
 @property (strong, nonatomic) NSMutableArray *categories;
-@property (nonatomic, assign) id<FoodSelectionDelegate> delegate;
+@property (nonatomic, assign) id<OrderSelectionDelegate> delegate;
 @end
