@@ -80,7 +80,7 @@
 - (NSString *)tableView:(nonnull UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSMutableDictionary *dict = [self.categories objectAtIndex:section];
-    return [dict objectForKey:@"name"];
+    return NSLocalizedString([dict objectForKey:@"name"], nil);
 }
 
 - (NSInteger)numberOfSectionsInTableView:(nonnull UITableView *)tableView
@@ -115,7 +115,9 @@
     food.price = [foodDict objectForKey:@"price"];
 //
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    [numberFormatter setMaximumFractionDigits:1];
+    [numberFormatter setLocale:[NSLocale currentLocale]];
+    [numberFormatter setDecimalSeparator:@"."];
     
     NSNumber *quantityNumber = [numberFormatter numberFromString:cell.foodQuantity.text];
     NSNumber *quantityPrice = [NSNumber numberWithFloat:[quantityNumber floatValue] * [food.price floatValue]];

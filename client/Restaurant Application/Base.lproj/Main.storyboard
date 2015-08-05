@@ -54,7 +54,7 @@
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9N-0I-RV0">
                                             <rect key="frame" x="562" y="7" width="30" height="30"/>
-                                            <state key="normal" title="Ekle"/>
+                                            <state key="normal" title="Add"/>
                                             <connections>
                                                 <action selector="buttonPressed:" destination="Xxr-yr-L9p" eventType="touchUpInside" id="XhZ-kG-ah8"/>
                                             </connections>
@@ -87,7 +87,7 @@
                                                 <action selector="minusButtonTapped:" destination="Xxr-yr-L9p" eventType="touchUpInside" id="b2v-zJ-ucd"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Porsiyon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvc-1c-AoR">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Portion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvc-1c-AoR">
                                             <rect key="frame" x="168" y="4" width="53" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="53" id="Uje-9k-6Vn"/>
@@ -169,12 +169,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZFX-ih-sMv">
-                                <rect key="frame" x="0.0" y="175" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15K-vq-JwG">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sipariş Verilmedi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3Q-dn-Nz6">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Has not ordered" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3Q-dn-Nz6">
                                                 <rect key="frame" x="200" y="16" width="201" height="20.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="201" id="8a0-2A-Dq0"/>
@@ -185,15 +185,28 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHf-Rs-MVh">
                                                 <rect key="frame" x="8" y="12" width="53" height="30"/>
-                                                <state key="normal" title="Temizle"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="53" id="O9q-ew-bTp"/>
+                                                </constraints>
+                                                <state key="normal" title="Clear"/>
                                                 <connections>
                                                     <action selector="clearOrders:" destination="I8C-Pv-Jig" eventType="touchUpInside" id="9fj-s8-95l"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TL5-wE-1XE">
+                                                <rect key="frame" x="8" y="447" width="203" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="6qe-Og-Z4I"/>
+                                                    <constraint firstAttribute="width" constant="203" id="STm-6u-nhz"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="gHf-Rs-MVh" firstAttribute="leading" secondItem="15K-vq-JwG" secondAttribute="leading" constant="8" id="1hB-Mt-u0G"/>
+                                            <constraint firstItem="TL5-wE-1XE" firstAttribute="leading" secondItem="15K-vq-JwG" secondAttribute="leading" constant="8" id="4wW-6h-4Ml"/>
                                             <constraint firstItem="e3Q-dn-Nz6" firstAttribute="centerX" secondItem="15K-vq-JwG" secondAttribute="centerX" id="DXc-iz-QSb"/>
                                             <constraint firstItem="gHf-Rs-MVh" firstAttribute="top" secondItem="15K-vq-JwG" secondAttribute="top" constant="12" id="aaT-SK-Jlq"/>
                                         </constraints>
@@ -201,7 +214,7 @@
                                             <outletCollection property="gestureRecognizers" destination="GAZ-Do-iul" appends="YES" id="5jK-3c-tIW"/>
                                         </connections>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sepetiniz Boş" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zR-rN-sce">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your basket is empty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zR-rN-sce">
                                         <rect key="frame" x="203" y="0.0" width="195" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="NrM-np-La6"/>
@@ -213,7 +226,10 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOQ-h9-0G7">
                                         <rect key="frame" x="476" y="8" width="116" height="30"/>
-                                        <state key="normal" title="Siparişi Tamamla"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="116" id="hK2-LQ-2yt"/>
+                                        </constraints>
+                                        <state key="normal" title="Complete Order"/>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="f3t-aH-Bdq">
                                         <rect key="frame" x="0.0" y="53" width="600" height="385"/>
@@ -229,7 +245,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Porsiyon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4M-PP-4QG">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Portion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4M-PP-4QG">
                                                             <rect key="frame" x="0.0" y="1" width="46" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="3Vs-pb-bYr"/>
@@ -296,6 +312,7 @@
                                     <constraint firstItem="7zR-rN-sce" firstAttribute="top" secondItem="ZFX-ih-sMv" secondAttribute="top" id="Ahd-cp-a4q"/>
                                     <constraint firstItem="7zR-rN-sce" firstAttribute="centerX" secondItem="ZFX-ih-sMv" secondAttribute="centerX" id="Bgk-IB-poZ"/>
                                     <constraint firstItem="f3t-aH-Bdq" firstAttribute="leading" secondItem="ZFX-ih-sMv" secondAttribute="leading" id="C4n-ny-ffY"/>
+                                    <constraint firstItem="TL5-wE-1XE" firstAttribute="top" secondItem="f3t-aH-Bdq" secondAttribute="bottom" constant="9" id="Ea8-Xi-jpj"/>
                                     <constraint firstAttribute="trailing" secondItem="NOQ-h9-0G7" secondAttribute="trailing" constant="8" id="I0n-NM-d7e"/>
                                     <constraint firstItem="15K-vq-JwG" firstAttribute="leading" secondItem="ZFX-ih-sMv" secondAttribute="leading" id="L0p-9X-W1X"/>
                                     <constraint firstItem="f3t-aH-Bdq" firstAttribute="top" secondItem="NOQ-h9-0G7" secondAttribute="bottom" constant="15" id="Oed-iR-5LZ"/>
@@ -327,6 +344,7 @@
                         <outlet property="completeOrderButton" destination="NOQ-h9-0G7" id="cDd-3R-ChJ"/>
                         <outlet property="constraintBottomSpaceBasket" destination="aBq-RJ-7el" id="Qhp-4C-acm"/>
                         <outlet property="foodTitle" destination="yjs-7j-qpE" id="cR2-vK-Mmv"/>
+                        <outlet property="totalPrice" destination="TL5-wE-1XE" id="aRg-VX-zye"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vPT-p6-Bct" userLabel="First Responder" sceneMemberID="firstResponder"/>

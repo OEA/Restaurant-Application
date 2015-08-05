@@ -1,0 +1,66 @@
+
+/* Class = "UINavigationItem"; title = "Menu"; ObjectID = "6RE-hy-esw"; */
+"6RE-hy-esw.title" = "Menu";
+
+/* Class = "UILabel"; text = "Food Price"; ObjectID = "6mK-1k-MkT"; */
+"6mK-1k-MkT.text" = "Food Price";
+
+/* Class = "UILabel"; text = "Your basket is empty"; ObjectID = "7zR-rN-sce"; */
+"7zR-rN-sce.text" = "Your basket is empty";
+
+/* Class = "UILabel"; text = "TMOB"; ObjectID = "8CC-bD-uV6"; */
+"8CC-bD-uV6.text" = "TMOB";
+
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "H1G-y3-xBS"; */
+"H1G-y3-xBS.normalTitle" = "-";
+
+/* Class = "UIButton"; normalTitle = "Add"; ObjectID = "H9N-0I-RV0"; */
+"H9N-0I-RV0.normalTitle" = "Add";
+
+/* Class = "UILabel"; text = "Porsiyon Fiyatı"; ObjectID = "IJc-wC-4w8"; */
+"IJc-wC-4w8.text" = "Porsiyon Fiyatı";
+
+/* Class = "UIButton"; normalTitle = "Complete Order"; ObjectID = "NOQ-h9-0G7"; */
+"NOQ-h9-0G7.normalTitle" = "Complete Order";
+
+/* Class = "UIButton"; normalTitle = "Register"; ObjectID = "Nat-rW-RTj"; */
+"Nat-rW-RTj.normalTitle" = "Register";
+
+/* Class = "UILabel"; text = "Food Title"; ObjectID = "OQU-wC-cwf"; */
+"OQU-wC-cwf.text" = "Food Title";
+
+/* Class = "UILabel"; text = "Yemek Adı"; ObjectID = "OhH-yE-ZUw"; */
+"OhH-yE-ZUw.text" = "Yemek Adı";
+
+/* Class = "UILabel"; text = "Total Price: "; ObjectID = "TL5-wE-1XE"; */
+"TL5-wE-1XE.text" = "Total Price: ";
+
+/* Class = "UILabel"; text = "1.5"; ObjectID = "bql-P1-WtJ"; */
+"bql-P1-WtJ.text" = "1.5";
+
+/* Class = "UILabel"; text = "Has not ordered"; ObjectID = "e3Q-dn-Nz6"; */
+"e3Q-dn-Nz6.text" = "Has not ordered";
+
+/* Class = "UILabel"; text = "Portion"; ObjectID = "f4M-PP-4QG"; */
+"f4M-PP-4QG.text" = "Portion";
+
+/* Class = "UIButton"; normalTitle = "Clear"; ObjectID = "gHf-Rs-MVh"; */
+"gHf-Rs-MVh.normalTitle" = "Clear";
+
+/* Class = "UILabel"; text = "You should register to the system"; ObjectID = "iDe-3m-EEg"; */
+"iDe-3m-EEg.text" = "You should register to the system";
+
+/* Class = "UINavigationItem"; title = "Register iPad"; ObjectID = "jkI-IG-1RS"; */
+"jkI-IG-1RS.title" = "Register iPad";
+
+/* Class = "UILabel"; text = "Portion"; ObjectID = "jvc-1c-AoR"; */
+"jvc-1c-AoR.text" = "Portion";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "rxf-XK-Ae1"; */
+"rxf-XK-Ae1.normalTitle" = "+";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "w1R-N8-VpP"; */
+"w1R-N8-VpP.text" = "1";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "yjs-7j-qpE"; */
+"yjs-7j-qpE.text" = "Label";

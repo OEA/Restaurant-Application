@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  Restaurant Application
+
+  Created by Ömer Emre Aslan on 05/08/15.
+  Copyright © 2015 Ömer Emre Aslan. All rights reserved.
+*/
+
+
+"You have %lu orders." = "You have %lu orders.";
+"Your basket is empty." = "Your basket is empty.";
+"Soups" = "Soups";
+"Kebabs" = "Kebabs";
+"Total Price: %@ TL" = "Total Price: %@ TL"; 

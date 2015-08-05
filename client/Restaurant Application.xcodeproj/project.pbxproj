@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		17AC2E5A1B7087420014980A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17AC2E591B7087420014980A /* Assets.xcassets */; };
 		17BC80AF1B72030F007B1311 /* BasketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BC80AE1B72030F007B1311 /* BasketCell.m */; };
+		17BC80B41B722C75007B1311 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17BC80B61B722C75007B1311 /* Localizable.strings */; };
 		17D8F5CD1B70D4AA00D21141 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D8F5CC1B70D4AA00D21141 /* Order.m */; };
 		17EA63F11B70EA5A004EAEC7 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EA63F01B70EA5A004EAEC7 /* MenuCell.m */; };
 		17FECF0A1B6F2D2D00791B5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FECF091B6F2D2D00791B5F /* main.m */; };
@@ -39,6 +40,11 @@
 		17AC2E591B7087420014980A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17BC80AD1B72030F007B1311 /* BasketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasketCell.h; sourceTree = "<group>"; };
 		17BC80AE1B72030F007B1311 /* BasketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasketCell.m; sourceTree = "<group>"; };
+		17BC80B21B7229C3007B1311 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
+		17BC80B31B7229C3007B1311 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		17BC80B51B722C75007B1311 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		17BC80B71B722C82007B1311 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		17BC80B81B722C84007B1311 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		17D8F5CB1B70D4AA00D21141 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
 		17D8F5CC1B70D4AA00D21141 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		17EA63EF1B70EA5A004EAEC7 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
@@ -139,6 +145,7 @@
 				17FECF161B6F2D2D00791B5F /* LaunchScreen.storyboard */,
 				17FECF191B6F2D2D00791B5F /* Info.plist */,
 				17FECF081B6F2D2D00791B5F /* Supporting Files */,
+				17BC80B61B722C75007B1311 /* Localizable.strings */,
 			);
 			path = "Restaurant Application";
 			sourceTree = "<group>";
@@ -315,6 +322,7 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = 17FECEFC1B6F2D2D00791B5F;
 			productRefGroup = 17FECF061B6F2D2D00791B5F /* Products */;
@@ -333,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17FECF181B6F2D2D00791B5F /* LaunchScreen.storyboard in Resources */,
+				17BC80B41B722C75007B1311 /* Localizable.strings in Resources */,
 				17AC2E5A1B7087420014980A /* Assets.xcassets in Resources */,
 				17FECF131B6F2D2D00791B5F /* Main.storyboard in Resources */,
 			);
@@ -417,10 +426,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		17BC80B61B722C75007B1311 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				17BC80B51B722C75007B1311 /* Base */,
+				17BC80B71B722C82007B1311 /* en */,
+				17BC80B81B722C84007B1311 /* tr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		17FECF111B6F2D2D00791B5F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				17FECF121B6F2D2D00791B5F /* Base */,
+				17BC80B21B7229C3007B1311 /* tr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -429,6 +449,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				17FECF171B6F2D2D00791B5F /* Base */,
+				17BC80B31B7229C3007B1311 /* tr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

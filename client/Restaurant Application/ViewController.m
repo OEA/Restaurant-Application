@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSMutableArray *orders;
 @property (weak, nonatomic) IBOutlet UITableView *basketTableVew;
 @property (weak, nonatomic) IBOutlet UIButton *completeOrderButton;
+@property (weak, nonatomic) IBOutlet UILabel *totalPrice;
 @end
 
 @implementation ViewController
@@ -52,14 +53,23 @@
     
     self.foodTitle.text = self.food.name;
     if ([self.orders count] > 0) {
-        self.basketLabel.text = [NSString stringWithFormat:@"%lu adet sipariş mevcut.", (unsigned long)[self.orders count]];
+        self.basketLabel.text = [NSString stringWithFormat:NSLocalizedString(@"You have %lu orders.", nil), (unsigned long)[self.orders count]];
         self.completeOrderButton.enabled = YES;
     } else {
-        self.basketLabel.text = @"Sepetiniz Boş";
+        self.basketLabel.text = NSLocalizedString(@"Your basket is empty.", nil);
         self.completeOrderButton.enabled = NO;
     }
-    
+    self.totalPrice.text = [NSString stringWithFormat:NSLocalizedString(@"Total Price: %@ TL", nil),[self calculateTotalPrice]];
     [self.basketTableVew reloadData];
+}
+
+- (NSNumber *)calculateTotalPrice
+{
+    float totalPrice = 0;
+    for (Order *order in self.orders) {
+        totalPrice = totalPrice + [order.price floatValue];
+    }
+    return [NSNumber numberWithFloat:totalPrice];
 }
 
 - (IBAction)viewTapped:(UITapGestureRecognizer *)sender {
