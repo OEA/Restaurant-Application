@@ -13,7 +13,6 @@
 
 @interface MenuTVC()<MenuCellDelegate>
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loading;
-@property (nonatomic, assign) id<MenuCellDelegate> menuDelegate;
 @end
 @implementation MenuTVC
 
@@ -119,6 +118,42 @@
     }
 }
 
+- (void)menuCellPlusButtonTappedOnTableViewCell:(MenuCell *)cell
+{
+    if ([cell.foodQuantity.text isEqualToString:@"1.5"]) {
+        [self changeTextWithAnimation:cell changedText:@"2" changedButton:cell.plusButton status:NO];
+    } else {
+        [self changeTextWithAnimation:cell changedText:@"1.5" changedButton:cell.minusButton status:YES];
+    }
+}
 
+- (void)menuCellMinusButtonTappedOnTableViewCell:(MenuCell *)cell
+{
+    if ([cell.foodQuantity.text isEqualToString:@"1.5"]) {
+        [self changeTextWithAnimation:cell changedText:@"1" changedButton:cell.minusButton status:NO];
+    } else {
+        [self changeTextWithAnimation:cell changedText:@"1.5" changedButton:cell.plusButton status:YES];
+    }
+    
+}
+
+- (void)changeTextWithAnimation:(MenuCell *)cell
+                    changedText:(NSString *)changedText
+                  changedButton:(UIButton *)changedButton
+                         status:(BOOL)status
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        cell.foodQuantity.alpha = 0;
+    } completion:^(BOOL finished) {
+        cell.foodQuantity.text = changedText;
+        [UIView animateWithDuration:0.25 animations:^{
+            cell.foodQuantity.alpha = 1;
+        }];
+        if (changedButton) {
+            changedButton.enabled = status;
+        }
+        
+    }];
+}
 
 @end

@@ -13,6 +13,8 @@
 @protocol MenuCellDelegate <NSObject>
 
 - (void) menuCellAddButtonTappedOnTableViewCell:(MenuCell *)cell;
+- (void) menuCellPlusButtonTappedOnTableViewCell:(MenuCell *)cell;
+- (void) menuCellMinusButtonTappedOnTableViewCell:(MenuCell *)cell;
 
 @end
 
@@ -23,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *foodQuantityPrice;
 @property (weak, nonatomic) IBOutlet UILabel *foodQuantity;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
+@property (weak, nonatomic) IBOutlet UIButton *plusButton;
+@property (weak, nonatomic) IBOutlet UIButton *minusButton;
 
 @property (nonatomic,strong) NSIndexPath* indexPath;
 

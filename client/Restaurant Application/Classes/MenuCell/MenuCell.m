@@ -22,4 +22,20 @@
     }
 }
 
+-(IBAction)addButtonTapped:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(menuCellPlusButtonTappedOnTableViewCell:)])
+    {
+        [self.delegate menuCellPlusButtonTappedOnTableViewCell:self];
+    }
+}
+
+-(IBAction)minusButtonTapped:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(menuCellMinusButtonTappedOnTableViewCell:)])
+    {
+        [self.delegate menuCellMinusButtonTappedOnTableViewCell:self];
+    }
+}
+
 @end

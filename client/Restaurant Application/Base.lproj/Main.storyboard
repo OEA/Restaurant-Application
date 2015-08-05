@@ -25,7 +25,7 @@
                             <color key="color" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                         </activityIndicatorView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CategoryCell" id="Xxr-yr-L9p" customClass="MenuCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CategoryCell" id="Xxr-yr-L9p" customClass="MenuCell">
                                 <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xxr-yr-L9p" id="v1B-wY-otd">
@@ -56,7 +56,7 @@
                                             <rect key="frame" x="562" y="7" width="30" height="30"/>
                                             <state key="normal" title="Ekle"/>
                                             <connections>
-                                                <action selector="buttonPressed:" destination="Xxr-yr-L9p" eventType="touchUpInside" id="bA7-qB-390"/>
+                                                <action selector="buttonPressed:" destination="Xxr-yr-L9p" eventType="touchUpInside" id="XhZ-kG-ah8"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxf-XK-Ae1">
@@ -69,8 +69,11 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                             <inset key="contentEdgeInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
                                             <state key="normal" title="+"/>
+                                            <connections>
+                                                <action selector="addButtonTapped:" destination="Xxr-yr-L9p" eventType="touchUpInside" id="ZSL-uu-AjL"/>
+                                            </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1G-y3-xBS">
+                                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1G-y3-xBS">
                                             <rect key="frame" x="220" y="7" width="30" height="30"/>
                                             <color key="backgroundColor" red="0.92554620499999996" green="0.92437186019999995" blue="0.94488473890000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -80,6 +83,9 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                             <inset key="contentEdgeInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
                                             <state key="normal" title="-"/>
+                                            <connections>
+                                                <action selector="minusButtonTapped:" destination="Xxr-yr-L9p" eventType="touchUpInside" id="b2v-zJ-ucd"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Porsiyon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvc-1c-AoR">
                                             <rect key="frame" x="168" y="4" width="53" height="21"/>
@@ -91,7 +97,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1R-N8-VpP">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1R-N8-VpP">
                                             <rect key="frame" x="174" y="18" width="42" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -121,6 +127,8 @@
                                     <outlet property="foodName" destination="OhH-yE-ZUw" id="Tj4-oW-tl6"/>
                                     <outlet property="foodQuantity" destination="w1R-N8-VpP" id="3vx-ct-XIK"/>
                                     <outlet property="foodQuantityPrice" destination="IJc-wC-4w8" id="tPc-qW-gft"/>
+                                    <outlet property="minusButton" destination="H1G-y3-xBS" id="Syl-L2-uhV"/>
+                                    <outlet property="plusButton" destination="rxf-XK-Ae1" id="auU-PE-PFI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
