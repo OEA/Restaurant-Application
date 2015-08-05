@@ -82,3 +82,15 @@ ctrl.init = (app, db) ->
         detail: "Please full the fields."
       )
   )
+
+  app.get('/node/order/clearall', (req, resp) ->
+    db.collection "orders", (err, orderCollection) =>
+      orderCollection.remove({}, (err, coll)->
+        resp.send(
+          code: 200,
+          message: "success",
+          detail: "Cleared orders succesfully."
+        )
+      )
+      
+  )
