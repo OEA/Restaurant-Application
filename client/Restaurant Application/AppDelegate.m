@@ -11,6 +11,7 @@
 #import "Food.h"
 #import "ViewController.h"
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
+#import "Singleton.h"
 
 @interface AppDelegate ()
 
@@ -26,8 +27,9 @@
     UINavigationController *leftNavController = [splitViewController.viewControllers objectAtIndex:0];
     MenuTVC *leftViewController = (MenuTVC *)[leftNavController topViewController];
     ViewController *rightViewController = [splitViewController.viewControllers objectAtIndex:1];
-    leftViewController.delegate = rightViewController;
     
+    [Singleton sharedInstance].leftVC = leftViewController;
+    [Singleton sharedInstance].rightVC = rightViewController;
     return YES;
 }
 

@@ -16,26 +16,20 @@
 
 -(IBAction)buttonPressed:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(menuCellAddButtonTappedOnTableViewCell:)])
-    {
-        [self.delegate menuCellAddButtonTappedOnTableViewCell:self];
-    }
+    if (self.selectionBlock)
+        self.selectionBlock(self,MenuCellButtonTypeAdd);
 }
 
 -(IBAction)addButtonTapped:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(menuCellPlusButtonTappedOnTableViewCell:)])
-    {
-        [self.delegate menuCellPlusButtonTappedOnTableViewCell:self];
-    }
+    if (self.selectionBlock)
+        self.selectionBlock(self,MenuCellButtonTypePlus);
 }
 
 -(IBAction)minusButtonTapped:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(menuCellMinusButtonTappedOnTableViewCell:)])
-    {
-        [self.delegate menuCellMinusButtonTappedOnTableViewCell:self];
-    }
+    if (self.selectionBlock)
+        self.selectionBlock(self,MenuCellButtonTypeMinus);
 }
 
 @end

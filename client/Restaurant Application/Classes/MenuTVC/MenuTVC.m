@@ -10,8 +10,9 @@
 #import "CategoryManager.h"
 #import "CategoryM.h"
 #import "MenuCell.h"
+#import "Singleton.h"
 
-@interface MenuTVC()<MenuCellDelegate>
+@interface MenuTVC()
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loading;
 @end
 @implementation MenuTVC
@@ -94,7 +95,22 @@
     NSMutableDictionary *dict = [self.categories objectAtIndex:indexPath.section];
     
     cell.indexPath = indexPath;
-    cell.delegate = self;
+    cell.selectionBlock = ^(MenuCell* cell, MenuCellButtonType buttonType)
+    {
+        switch (buttonType)
+        {
+            case MenuCellButtonTypeAdd:
+                [self menuCellAddButtonTappedOnTableViewCell:cell];
+                break;
+            case MenuCellButtonTypeMinus:
+                [self menuCellMinusButtonTappedOnTableViewCell:cell];
+                break;
+            case MenuCellButtonTypePlus:
+                [self menuCellPlusButtonTappedOnTableViewCell:cell];
+            default:
+                break;
+        }
+    };
     
     NSArray *foodArray = [dict objectForKey:@"foods"];
     NSDictionary *foodDict = [foodArray objectAtIndex:indexPath.row];
@@ -126,9 +142,8 @@
     order.user = @"test";
     order.price = quantityPrice;
     order.quantity = quantityNumber;
-    if (_delegate) {
-        [_delegate selectedOrder:order];
-    }
+    [[Singleton sharedInstance].rightVC selectedOrder:order];
+    
 }
 
 - (void)menuCellPlusButtonTappedOnTableViewCell:(MenuCell *)cell

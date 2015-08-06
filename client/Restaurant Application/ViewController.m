@@ -15,9 +15,12 @@
 @property (weak, nonatomic) IBOutlet UIView *cartView;
 @property (weak, nonatomic) IBOutlet UILabel *basketLabel;
 @property (strong, nonatomic) NSMutableArray *orders;
-@property (weak, nonatomic) IBOutlet UITableView *basketTableVew;
+@property (strong, nonatomic) NSMutableArray *completedOrders;
+@property (weak, nonatomic) IBOutlet UITableView *basketTableView;
 @property (weak, nonatomic) IBOutlet UIButton *completeOrderButton;
 @property (weak, nonatomic) IBOutlet UILabel *totalPrice;
+@property (weak, nonatomic) IBOutlet UITableView *completedOrderTableView;
+@property (weak, nonatomic) IBOutlet UILabel *orderStatus;
 @end
 
 @implementation ViewController
@@ -27,8 +30,10 @@
     [super viewDidLoad];
     _constraintBottomSpaceBasket.constant = 50 -self.view.frame.size.height;
     
-    self.basketTableVew.dataSource = self;
-    self.basketTableVew.delegate = self;
+    self.basketTableView.dataSource = self;
+    self.basketTableView.delegate = self;
+    self.completedOrderTableView.delegate = self;
+    self.completedOrderTableView.dataSource = self;
 }
 - (IBAction)clearOrders:(id)sender {
     [self.orders removeAllObjects];
@@ -41,6 +46,14 @@
         _orders = [NSMutableArray new];
     }
     return _orders;
+}
+
+- (NSMutableArray *)completedOrders
+{
+    if (!_completedOrders) {
+        _completedOrders = [NSMutableArray new];
+    }
+    return _completedOrders;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,13 +73,17 @@
         self.completeOrderButton.enabled = NO;
     }
     self.totalPrice.text = [NSString stringWithFormat:NSLocalizedString(@"Total Price: %@ TL", nil),[self calculateTotalPrice]];
-    [self.basketTableVew reloadData];
+    [self.basketTableView reloadData];
+    [self.completedOrderTableView reloadData];
 }
 
 - (NSNumber *)calculateTotalPrice
 {
     float totalPrice = 0;
     for (Order *order in self.orders) {
+        totalPrice = totalPrice + [order.price floatValue];
+    }
+    for (Order *order in self.completedOrders) {
         totalPrice = totalPrice + [order.price floatValue];
     }
     return [NSNumber numberWithFloat:totalPrice];
@@ -80,6 +97,14 @@
     }
     
     
+}
+- (IBAction)completeOrders:(id)sender {
+    for (Order *order in self.orders) {
+        [self.completedOrders addObject:order];
+    }
+    [self.orders removeAllObjects];
+    self.orderStatus.text = @"Siparişiniz Hazırlanıyor";
+    [self refreshUI];
 }
 
 - (void)refreshConstraints
@@ -125,17 +150,39 @@
 
 - (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
+    
     BasketCell *cell = [tableView dequeueReusableCellWithIdentifier:@"basketCell"];
-    Order *order = [self.orders objectAtIndex:indexPath.row];
+    Order *order;
+    if (tableView == self.basketTableView) {
+        order = [self.orders objectAtIndex:indexPath.row];
+    } else {
+        order = [self.completedOrders objectAtIndex:indexPath.row];
+    }
+    
+    
     cell.foodTitle.text = order.food;
     cell.foodPrice.text = [NSString stringWithFormat:@"%@ TL",order.price];
     cell.foodQuantity.text = [NSString stringWithFormat:@"%@",order.quantity];
+    
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.orders count];
+    if (tableView == self.basketTableView) {
+        return [self.orders count];
+    } else {
+        return [self.completedOrders count];
+    }
+}
+
+- (NSString *)tableView:(nonnull UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(tableView == self.basketTableView) {
+        return @"Siparişler";
+    } else {
+        return @"Önceki Siparişler";
+    }
 }
 
 - (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1792A1931B733AFC009A3D1B /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792A1921B733AFC009A3D1B /* Singleton.m */; };
 		17AC2E5A1B7087420014980A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17AC2E591B7087420014980A /* Assets.xcassets */; };
 		17BC80AF1B72030F007B1311 /* BasketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BC80AE1B72030F007B1311 /* BasketCell.m */; };
 		17BC80B41B722C75007B1311 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17BC80B61B722C75007B1311 /* Localizable.strings */; };
@@ -37,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		0EC50C2768975E43F5FDA560 /* Pods-Restaurant Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restaurant Application.release.xcconfig"; path = "Pods/Target Support Files/Pods-Restaurant Application/Pods-Restaurant Application.release.xcconfig"; sourceTree = "<group>"; };
+		1792A1911B733AFC009A3D1B /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		1792A1921B733AFC009A3D1B /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Singleton.m; sourceTree = "<group>"; };
 		17AC2E591B7087420014980A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17BC80AD1B72030F007B1311 /* BasketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasketCell.h; sourceTree = "<group>"; };
 		17BC80AE1B72030F007B1311 /* BasketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasketCell.m; sourceTree = "<group>"; };
@@ -92,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1792A1901B733AEA009A3D1B /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				1792A1911B733AFC009A3D1B /* Singleton.h */,
+				1792A1921B733AFC009A3D1B /* Singleton.m */,
+			);
+			path = Singleton;
+			sourceTree = "<group>";
+		};
 		17BC80AC1B7202B2007B1311 /* BasketCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +192,7 @@
 		17FECF2E1B6F30A300791B5F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				1792A1901B733AEA009A3D1B /* Singleton */,
 				17FECF341B6F31F600791B5F /* CategoryManager */,
 			);
 			path = Managers;
@@ -402,6 +415,7 @@
 				17EA63F11B70EA5A004EAEC7 /* MenuCell.m in Sources */,
 				17FECF331B6F30EC00791B5F /* MenuTVC.m in Sources */,
 				17D8F5CD1B70D4AA00D21141 /* Order.m in Sources */,
+				1792A1931B733AFC009A3D1B /* Singleton.m in Sources */,
 				17FECF0A1B6F2D2D00791B5F /* main.m in Sources */,
 				17BC80AF1B72030F007B1311 /* BasketCell.m in Sources */,
 			);

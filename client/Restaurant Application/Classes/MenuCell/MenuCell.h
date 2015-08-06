@@ -8,16 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(int, MenuCellButtonType)
+{
+    MenuCellButtonTypeAdd,
+    MenuCellButtonTypePlus,
+    MenuCellButtonTypeMinus
+};
+
 @class MenuCell;
 
-@protocol MenuCellDelegate <NSObject>
 
-- (void) menuCellAddButtonTappedOnTableViewCell:(MenuCell *)cell;
-- (void) menuCellPlusButtonTappedOnTableViewCell:(MenuCell *)cell;
-- (void) menuCellMinusButtonTappedOnTableViewCell:(MenuCell *)cell;
-
-@end
-
+typedef void (^MenuCellSelectionBlock)(MenuCell*, MenuCellButtonType);
 
 @interface MenuCell : UITableViewCell
 
@@ -30,6 +31,6 @@
 
 @property (nonatomic,strong) NSIndexPath* indexPath;
 
-@property (weak, nonatomic) id <MenuCellDelegate> delegate;
+@property (nonatomic,copy) MenuCellSelectionBlock selectionBlock;
 
 @end
