@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1792A1931B733AFC009A3D1B /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792A1921B733AFC009A3D1B /* Singleton.m */; };
+		1792A1971B734756009A3D1B /* OrderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792A1961B734756009A3D1B /* OrderManager.m */; };
 		17AC2E5A1B7087420014980A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17AC2E591B7087420014980A /* Assets.xcassets */; };
 		17BC80AF1B72030F007B1311 /* BasketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BC80AE1B72030F007B1311 /* BasketCell.m */; };
 		17BC80B41B722C75007B1311 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17BC80B61B722C75007B1311 /* Localizable.strings */; };
@@ -40,6 +41,9 @@
 		0EC50C2768975E43F5FDA560 /* Pods-Restaurant Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restaurant Application.release.xcconfig"; path = "Pods/Target Support Files/Pods-Restaurant Application/Pods-Restaurant Application.release.xcconfig"; sourceTree = "<group>"; };
 		1792A1911B733AFC009A3D1B /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		1792A1921B733AFC009A3D1B /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Singleton.m; sourceTree = "<group>"; };
+		1792A1951B734756009A3D1B /* OrderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderManager.h; sourceTree = "<group>"; };
+		1792A1961B734756009A3D1B /* OrderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderManager.m; sourceTree = "<group>"; };
+		1792A1981B734DF4009A3D1B /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		17AC2E591B7087420014980A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17BC80AD1B72030F007B1311 /* BasketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasketCell.h; sourceTree = "<group>"; };
 		17BC80AE1B72030F007B1311 /* BasketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasketCell.m; sourceTree = "<group>"; };
@@ -104,6 +108,15 @@
 			path = Singleton;
 			sourceTree = "<group>";
 		};
+		1792A1941B734739009A3D1B /* OrderManager */ = {
+			isa = PBXGroup;
+			children = (
+				1792A1951B734756009A3D1B /* OrderManager.h */,
+				1792A1961B734756009A3D1B /* OrderManager.m */,
+			);
+			path = OrderManager;
+			sourceTree = "<group>";
+		};
 		17BC80AC1B7202B2007B1311 /* BasketCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				17FECF091B6F2D2D00791B5F /* main.m */,
+				1792A1981B734DF4009A3D1B /* Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -192,6 +206,7 @@
 		17FECF2E1B6F30A300791B5F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				1792A1941B734739009A3D1B /* OrderManager */,
 				1792A1901B733AEA009A3D1B /* Singleton */,
 				17FECF341B6F31F600791B5F /* CategoryManager */,
 			);
@@ -411,6 +426,7 @@
 				17FECF431B6F8FAE00791B5F /* CategoryM.m in Sources */,
 				17FECF371B6F323C00791B5F /* CategoryManager.m in Sources */,
 				17FECF0D1B6F2D2D00791B5F /* AppDelegate.m in Sources */,
+				1792A1971B734756009A3D1B /* OrderManager.m in Sources */,
 				17FECF3D1B6F8BA600791B5F /* Food.m in Sources */,
 				17EA63F11B70EA5A004EAEC7 /* MenuCell.m in Sources */,
 				17FECF331B6F30EC00791B5F /* MenuTVC.m in Sources */,
@@ -558,6 +574,7 @@
 			baseConfigurationReference = 2647EF13619840CC6E02BDB7 /* Pods-Restaurant Application.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "Restaurant Application/Prefix.pch";
 				INFOPLIST_FILE = "Restaurant Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.omer.Restaurant-Application";
@@ -570,6 +587,7 @@
 			baseConfigurationReference = 0EC50C2768975E43F5FDA560 /* Pods-Restaurant Application.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "Restaurant Application/Prefix.pch";
 				INFOPLIST_FILE = "Restaurant Application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.omer.Restaurant-Application";

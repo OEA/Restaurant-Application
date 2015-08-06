@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "BasketCell.h"
+#import "OrderManager.h"
 
 @interface ViewController ()<UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomSpaceBasket;
@@ -35,6 +36,7 @@
     self.completedOrderTableView.delegate = self;
     self.completedOrderTableView.dataSource = self;
 }
+
 - (IBAction)clearOrders:(id)sender {
     [self.orders removeAllObjects];
     [self refreshUI];
@@ -91,7 +93,6 @@
 
 - (IBAction)viewTapped:(UITapGestureRecognizer *)sender {
     
-    UITableView *view = (UITableView *)sender.view;
     if (![sender isKindOfClass:[UITableView class]]) {
        [self refreshConstraints];
     }
@@ -99,11 +100,21 @@
     
 }
 - (IBAction)completeOrders:(id)sender {
+    OrderManager *orderManager = [OrderManager new];
     for (Order *order in self.orders) {
         [self.completedOrders addObject:order];
+        
+        [orderManager addOrder:@"test" food:order.food price:order.price quantity:order.quantity success:^(NSURLSessionDataTask *task, id responseObject) {
+            //return responseObject
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            //return error
+        }];
+        
     }
     [self.orders removeAllObjects];
-    self.orderStatus.text = @"Siparişiniz Hazırlanıyor";
+    self.orderStatus.text = NSLocalizedString(@"Your orders are being prepared.", nil);
+    
+    
     [self refreshUI];
 }
 
@@ -165,6 +176,49 @@
     cell.foodQuantity.text = [NSString stringWithFormat:@"%@",order.quantity];
     
     return cell;
+}
+
+- (IBAction)payTotalPrice:(id)sender {
+    
+    
+    
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle:@"Parking action"
+                                          message:@"If you want to park here, please approve it."
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction
+                                   actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"Cancel action");
+                                   }];
+    UIAlertAction *okAction = [UIAlertAction
+                               actionWithTitle:NSLocalizedString(@"OK", @"OK action")
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action)
+                               {
+                                   
+                                   OrderManager *orderManager = [OrderManager new];
+                                   [orderManager getOrders:@"Masa2" success:^(NSURLSessionDataTask *task, id responseObject) {
+                                       NSArray *dictArray = [responseObject objectForKey:@"orders"];
+                                       
+                                       for (NSDictionary *dict in dictArray) {
+                                           [orderManager payOrder:[dict objectForKey:@"_id"] success:^(NSURLSessionDataTask *task, id responseObject) {
+                                               NSLog(@"%@ id odendi",[dict objectForKey:@"_id"]);
+                                           } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                               
+                                           }];
+                                       }
+                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                       
+                                   }];
+                                   
+                               }];
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section

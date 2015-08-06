@@ -8,8 +8,6 @@
 
 #import "CategoryManager.h"
 
-NSString * const baseURLString = @"http://oeaslan.com/node/";
-
 @implementation CategoryManager
 
 
@@ -17,7 +15,7 @@ NSString * const baseURLString = @"http://oeaslan.com/node/";
     static CategoryManager *_sharedClient = nil;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
-        _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:baseURLString]];
+        _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:SERVICE_URL]];
     });
     return _sharedClient;
 }
@@ -44,6 +42,8 @@ NSString * const baseURLString = @"http://oeaslan.com/node/";
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         failure(task, error);
     }];
+    
+    
 }
 
 - (void)getFoods:(NSString *)category
