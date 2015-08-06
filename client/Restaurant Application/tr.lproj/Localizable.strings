@@ -11,4 +11,5 @@
 "Your basket is empty." = "Sepetiniz boş.";
 "Soups" = "Çorbalar";
 "Kebabs" = "Kebaplar";
-"Total Price: %@ TL" = "Hesap: %@ TL"; 
+"Total Price: %@ TL" = "Hesap: %@ TL";
+"Your orders are being prepared." = "Siparişleriniz hazırlanıyor.";
