@@ -1,9 +1,9 @@
 # Uncomment this line to define a global platform for your project
 platform :ios, '7.0'
 
-
 target 'Restaurant Application' do
-pod 'AFNetworking', '2.2.1'
+    pod 'AFNetworking', '2.2.1'
+    pod 'SSKeychain'
 end
 
 target 'Restaurant ApplicationTests' do

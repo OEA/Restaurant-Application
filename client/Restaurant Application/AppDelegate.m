@@ -21,15 +21,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    if ([self.window.rootViewController isKindOfClass:UISplitViewController.class]) {
     // Override point for customization after application launch.
-    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-    UINavigationController *leftNavController = [splitViewController.viewControllers objectAtIndex:0];
-    MenuTVC *leftViewController = (MenuTVC *)[leftNavController topViewController];
-    ViewController *rightViewController = [splitViewController.viewControllers objectAtIndex:1];
+        [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+        UINavigationController *leftNavController = [splitViewController.viewControllers objectAtIndex:0];
+        MenuTVC *leftViewController = (MenuTVC *)[leftNavController topViewController];
+        ViewController *rightViewController = [splitViewController.viewControllers objectAtIndex:1];
+        
+        [Singleton sharedInstance].leftVC = leftViewController;
+        [Singleton sharedInstance].rightVC = rightViewController;
+    }
     
-    [Singleton sharedInstance].leftVC = leftViewController;
-    [Singleton sharedInstance].rightVC = rightViewController;
     return YES;
 }
 

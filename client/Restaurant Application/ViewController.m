@@ -183,8 +183,8 @@
     
     
     UIAlertController *alertController = [UIAlertController
-                                          alertControllerWithTitle:@"Parking action"
-                                          message:@"If you want to park here, please approve it."
+                                          alertControllerWithTitle:@"Payment"
+                                          message:@"If you want to pay, please tap Pay button"
                                           preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction
                                    actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
@@ -194,7 +194,7 @@
                                        NSLog(@"Cancel action");
                                    }];
     UIAlertAction *okAction = [UIAlertAction
-                               actionWithTitle:NSLocalizedString(@"OK", @"OK action")
+                               actionWithTitle:NSLocalizedString(@"Pay", @"OK action")
                                style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction *action)
                                {
@@ -213,6 +213,12 @@
                                    } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                        
                                    }];
+                                   
+                                   [self.completedOrders removeAllObjects];
+                                   
+                                   [self refreshUI];
+                                   
+                                   self.orderStatus.text = NSLocalizedString(@"Has not ordered yet.", nil);
                                    
                                }];
     

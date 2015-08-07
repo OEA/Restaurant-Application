@@ -13,3 +13,4 @@
 "Kebabs" = "Kebaplar";
 "Total Price: %@ TL" = "Hesap: %@ TL";
 "Your orders are being prepared." = "Siparişleriniz hazırlanıyor.";
+"Has not ordered yet." = "Sipariş verilmedi.";

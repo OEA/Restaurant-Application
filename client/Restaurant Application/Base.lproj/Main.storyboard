@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JXP-cN-9d8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ahf-cu-rx1">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -470,7 +470,7 @@
         <!--Split View Controller-->
         <scene sceneID="ke1-9u-a0e">
             <objects>
-                <splitViewController id="JXP-cN-9d8" sceneMemberID="viewController">
+                <splitViewController storyboardIdentifier="split" id="JXP-cN-9d8" sceneMemberID="viewController">
                     <connections>
                         <segue destination="LoW-QN-49Q" kind="relationship" relationship="masterViewController" id="ggc-Y7-Qxx"/>
                         <segue destination="I8C-Pv-Jig" kind="relationship" relationship="detailViewController" id="DHy-AO-sko"/>
@@ -483,7 +483,7 @@
         <!--Register iPad-->
         <scene sceneID="mp6-2t-WS3">
             <objects>
-                <viewController id="ImD-gA-kEa" sceneMemberID="viewController">
+                <viewController id="ImD-gA-kEa" customClass="RegisterVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aa1-lj-oSR"/>
                         <viewControllerLayoutGuide type="bottom" id="k1W-mU-GnH"/>
@@ -511,51 +511,82 @@
                                 <color key="shadowColor" red="0.94901960784313721" green="0.84313725490196079" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="2" height="-1"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You should register to the system" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDe-3m-EEg">
-                                <rect key="frame" x="20" y="322" width="560" height="38"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rqv-iQ-O2x">
+                                <rect key="frame" x="102" y="322" width="395" height="128"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TJ-Oi-3wU">
+                                        <rect key="frame" x="8" y="95" width="379" height="30"/>
+                                        <color key="backgroundColor" red="0.6588235294" green="0.45098039220000002" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Register">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="registerButtonTapped:" destination="ImD-gA-kEa" eventType="touchUpInside" id="fFJ-Fz-6mh"/>
+                                        </connections>
+                                    </button>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sSF-Po-JIb">
+                                        <rect key="frame" x="338" y="56" width="51" height="31"/>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GpO-Ka-ybZ">
+                                        <rect key="frame" x="342" y="34" width="45" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="SjE-x7-6Be"/>
+                                            <constraint firstAttribute="height" constant="21" id="yBz-p1-1eC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You should register to the system" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xe-cL-LUk">
+                                        <rect key="frame" x="8" y="0.0" width="379" height="38"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38" id="HOe-8N-Pdj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cXe-Ng-o28">
+                                        <rect key="frame" x="8" y="57" width="324" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="dPo-dB-uZD"/>
+                                    <constraint firstItem="8TJ-Oi-3wU" firstAttribute="leading" secondItem="Rqv-iQ-O2x" secondAttribute="leading" constant="8" id="0Ef-OU-Suf"/>
+                                    <constraint firstItem="sSF-Po-JIb" firstAttribute="top" secondItem="GpO-Ka-ybZ" secondAttribute="bottom" constant="1" id="4iS-et-0BH"/>
+                                    <constraint firstItem="GpO-Ka-ybZ" firstAttribute="top" secondItem="6Xe-cL-LUk" secondAttribute="bottom" constant="-4" id="84H-Mt-cpO"/>
+                                    <constraint firstItem="sSF-Po-JIb" firstAttribute="leading" secondItem="cXe-Ng-o28" secondAttribute="trailing" constant="6" id="9SB-0f-aRP"/>
+                                    <constraint firstAttribute="height" constant="128" id="Dyi-WI-aUa"/>
+                                    <constraint firstAttribute="trailing" secondItem="GpO-Ka-ybZ" secondAttribute="trailing" constant="8" id="K9m-qB-LtJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="sSF-Po-JIb" secondAttribute="trailing" constant="8" id="NcB-fu-E4y"/>
+                                    <constraint firstAttribute="width" constant="395" id="SWe-hn-L9q"/>
+                                    <constraint firstItem="6Xe-cL-LUk" firstAttribute="leading" secondItem="Rqv-iQ-O2x" secondAttribute="leading" constant="8" id="Z8k-Uh-yOi"/>
+                                    <constraint firstItem="cXe-Ng-o28" firstAttribute="top" secondItem="GpO-Ka-ybZ" secondAttribute="bottom" constant="2" id="cJd-FC-wrM"/>
+                                    <constraint firstAttribute="trailing" secondItem="8TJ-Oi-3wU" secondAttribute="trailing" constant="8" id="fA6-PP-Bcs"/>
+                                    <constraint firstItem="6Xe-cL-LUk" firstAttribute="top" secondItem="Rqv-iQ-O2x" secondAttribute="top" id="j7r-re-0BO"/>
+                                    <constraint firstItem="6Xe-cL-LUk" firstAttribute="centerX" secondItem="Rqv-iQ-O2x" secondAttribute="centerX" id="jE3-Sq-tJ2"/>
+                                    <constraint firstItem="cXe-Ng-o28" firstAttribute="leading" secondItem="Rqv-iQ-O2x" secondAttribute="leading" constant="8" id="k64-vy-0Zo"/>
+                                    <constraint firstItem="8TJ-Oi-3wU" firstAttribute="top" secondItem="cXe-Ng-o28" secondAttribute="bottom" constant="8" id="pmx-pj-FZJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Xe-cL-LUk" secondAttribute="trailing" constant="8" id="wPL-Be-SVF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
-                                <nil key="highlightedColor"/>
-                                <size key="shadowOffset" width="0.0" height="0.0"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S3D-aw-K0n">
-                                <rect key="frame" x="20" y="368" width="503" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NSf-5P-9i6">
-                                <rect key="frame" x="531" y="368" width="51" height="31"/>
-                            </switch>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nat-rW-RTj">
-                                <rect key="frame" x="20" y="407" width="560" height="30"/>
-                                <color key="backgroundColor" red="0.6588235294" green="0.45098039220000002" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Register">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.87058823529411766" green="0.60784313725490191" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="8CC-bD-uV6" firstAttribute="centerX" secondItem="YgT-ld-w1D" secondAttribute="centerX" id="0V7-Yl-iHh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="iDe-3m-EEg" secondAttribute="trailing" id="39F-yZ-zHV"/>
-                            <constraint firstItem="NSf-5P-9i6" firstAttribute="top" secondItem="iDe-3m-EEg" secondAttribute="bottom" constant="8" id="5tb-zP-97d"/>
-                            <constraint firstItem="Nat-rW-RTj" firstAttribute="top" secondItem="S3D-aw-K0n" secondAttribute="bottom" constant="9" id="FgX-oy-9y7"/>
+                            <constraint firstItem="Rqv-iQ-O2x" firstAttribute="top" secondItem="YgT-ld-w1D" secondAttribute="bottom" constant="8" id="3ZY-HI-d5g"/>
                             <constraint firstItem="YgT-ld-w1D" firstAttribute="top" secondItem="aa1-lj-oSR" secondAttribute="bottom" constant="8" id="Kk1-Sz-Emu"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="iDe-3m-EEg" secondAttribute="leading" id="Lxi-ls-7Mq"/>
-                            <constraint firstItem="iDe-3m-EEg" firstAttribute="top" secondItem="YgT-ld-w1D" secondAttribute="bottom" constant="8" id="TSH-jP-3wA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="NSf-5P-9i6" secondAttribute="trailing" id="YQI-5Z-IMU"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="Nat-rW-RTj" secondAttribute="leading" id="bci-Hu-idG"/>
                             <constraint firstItem="YgT-ld-w1D" firstAttribute="centerX" secondItem="7ng-zD-YnH" secondAttribute="centerX" id="dAD-yo-8pT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Nat-rW-RTj" secondAttribute="trailing" id="dEo-Aq-Rye"/>
-                            <constraint firstItem="S3D-aw-K0n" firstAttribute="top" secondItem="iDe-3m-EEg" secondAttribute="bottom" constant="8" id="g1p-la-Df2"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="S3D-aw-K0n" secondAttribute="leading" id="hXP-EX-smk"/>
+                            <constraint firstItem="Rqv-iQ-O2x" firstAttribute="centerX" secondItem="7ng-zD-YnH" secondAttribute="centerX" id="o39-zm-Mio"/>
                             <constraint firstItem="8CC-bD-uV6" firstAttribute="top" secondItem="YgT-ld-w1D" secondAttribute="bottom" constant="-100" id="s3m-3Q-dfg"/>
-                            <constraint firstItem="NSf-5P-9i6" firstAttribute="leading" secondItem="S3D-aw-K0n" secondAttribute="trailing" constant="8" id="xqX-Ss-U5H"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Register iPad" id="jkI-IG-1RS"/>
+                    <connections>
+                        <outlet property="isAdminSwitch" destination="sSF-Po-JIb" id="cP7-i3-wdo"/>
+                        <outlet property="nameText" destination="cXe-Ng-o28" id="2Xp-Lp-wLl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4um-g4-imh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -564,7 +595,7 @@
         <!--Navigation Controller-->
         <scene sceneID="tpW-wC-LK4">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ahf-cu-rx1" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="login" automaticallyAdjustsScrollViewInsets="NO" id="Ahf-cu-rx1" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2I7-Eh-E2C">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
