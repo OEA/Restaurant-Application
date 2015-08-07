@@ -11,6 +11,7 @@
 #import "Food.h"
 #import "ViewController.h"
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
+#import <SSKeychain/SSKeychain.h>
 #import "Singleton.h"
 
 @interface AppDelegate ()
@@ -22,18 +23,34 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    if ([self.window.rootViewController isKindOfClass:UISplitViewController.class]) {
-    // Override point for customization after application launch.
-        [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-        UINavigationController *leftNavController = [splitViewController.viewControllers objectAtIndex:0];
-        MenuTVC *leftViewController = (MenuTVC *)[leftNavController topViewController];
-        ViewController *rightViewController = [splitViewController.viewControllers objectAtIndex:1];
-        
-        [Singleton sharedInstance].leftVC = leftViewController;
-        [Singleton sharedInstance].rightVC = rightViewController;
+        NSString *adminKeyChain = [SSKeychain passwordForService:@"isAdmin" account:@"tmob"];
+        BOOL isAdmin = [adminKeyChain boolValue];
+    if (adminKeyChain) {
+        if (isAdmin) {
+            
+            //If user select iPad as Administrator.
+            [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+            UISplitViewController *splitViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"admin"];
+            UINavigationController *leftNavController = [splitViewController.viewControllers objectAtIndex:0];
+            MenuTVC *leftViewController = (MenuTVC *)[leftNavController topViewController];
+            ViewController *rightViewController = [splitViewController.viewControllers objectAtIndex:1];
+            
+            [Singleton sharedInstance].leftVC = leftViewController;
+            [Singleton sharedInstance].rightVC = rightViewController;
+            [self.window setRootViewController:splitViewController];
+            
+        } else {
+            [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+            UISplitViewController *splitViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"table"];
+            UINavigationController *leftNavController = [splitViewController.viewControllers objectAtIndex:0];
+            MenuTVC *leftViewController = (MenuTVC *)[leftNavController topViewController];
+            ViewController *rightViewController = [splitViewController.viewControllers objectAtIndex:1];
+            
+            [Singleton sharedInstance].leftVC = leftViewController;
+            [Singleton sharedInstance].rightVC = rightViewController;
+            [self.window setRootViewController:splitViewController];
+        }
     }
-    
     return YES;
 }
 
