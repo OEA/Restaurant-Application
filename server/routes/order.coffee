@@ -34,7 +34,7 @@ ctrl.init = (app, db) ->
 
   app.get('/node/order/getall', (req, resp) ->
     db.collection "orders", (err, collection) =>
-      collection.find({'active':{$ne : 0}, 'active':{$ne: "0"}}).toArray((err, orders) ->
+      collection.find({ $nor: [ { active: 0 }, { active: "0" } ] }).toArray((err, orders) ->
         resp.send(
           code: 200,
           message: "success",
