@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MenuTVC.h"
+#import "AdminMenuTVC.h"
 #import "Food.h"
 #import "ViewController.h"
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
@@ -32,10 +33,10 @@
             [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
             UISplitViewController *splitViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"admin"];
             UINavigationController *leftNavController = [splitViewController.viewControllers objectAtIndex:0];
-            MenuTVC *leftViewController = (MenuTVC *)[leftNavController topViewController];
+            AdminMenuTVC *leftViewController = (AdminMenuTVC *)[leftNavController topViewController];
             ViewController *rightViewController = [splitViewController.viewControllers objectAtIndex:1];
             
-            [Singleton sharedInstance].leftVC = leftViewController;
+            [Singleton sharedInstance].adminMenuTVC = leftViewController;
             [Singleton sharedInstance].rightVC = rightViewController;
             [self.window setRootViewController:splitViewController];
             

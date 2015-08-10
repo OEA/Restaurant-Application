@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "MenuTVC.h"
 #import "ViewController.h"
+#import "AdminMenuTVC.h"
 
 @interface Singleton : NSObject
 
 @property (nonatomic,strong) MenuTVC *leftVC;
+@property (nonatomic,strong) AdminMenuTVC *adminMenuTVC;
 @property (nonatomic,strong) ViewController *rightVC;
 
 +(instancetype)sharedInstance;
