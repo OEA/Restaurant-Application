@@ -8,6 +8,7 @@
 
 #import "AdminMenuTVC.h"
 #import "AdminMenuCell.h"
+#import "OrderManager.h"
 
 @interface AdminMenuTVC ()
 
@@ -17,8 +18,66 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initArrays];
+    [self loadOrders];
 }
 
+- (void)initArrays
+{
+    if (!_orders)
+        _orders = [NSMutableArray new];
+    if (!_tables)
+        _tables = [NSMutableArray new];
+    if (!_users)
+        _users = [NSMutableArray new];
+}
+
+- (void)loadOrders
+{
+    OrderManager *orderManager = [OrderManager new];
+    [orderManager getAllOrders:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dict = responseObject;
+        self.orders = [dict objectForKey:@"orders"];
+        [self processOrders];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+}
+
+- (void)processOrders
+{
+    for (NSDictionary *dict in self.orders) {
+        NSString *user = [dict objectForKey:@"user"];
+        if ([user containsString:@"Masa"] && ![self hasAddedUser:user :_tables]) {
+            [_tables addObject:dict];
+        } else if(![user containsString:@"Masa"] &&![self hasAddedUser:user :_users]) {
+            [_users addObject:dict];
+        }
+    }
+    [self.tableView reloadData];
+}
+
+- (BOOL)hasAddedUser:(NSString *)name :(NSMutableArray *)array
+{
+    for (NSDictionary *dict in array) {
+        if ([name isEqualToString:[dict objectForKey:@"user"]]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (NSInteger)countOfTablesOrder :(NSString *)name
+{
+    NSInteger count = 0;
+    for (NSDictionary *dict in _orders) {
+        if ([name isEqualToString:[dict objectForKey:@"user"]]) {
+            count++;
+        }
+    }
+    return count;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -27,11 +86,16 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    if (section == 0){
+        return [_tables count];
+    } else {
+        return [_users count];
+    }
+    
 }
 
 
@@ -42,14 +106,22 @@
     cell.badgeView.layer.borderWidth = 0;
     // Configure the cell...
     
+    if (indexPath.section == 0) {
+        NSDictionary *userDict = [_tables objectAtIndex:indexPath.row];
+        cell.tableNameText.text = [userDict objectForKey:@"user"];
+        cell.badgeCountText.text = [NSString stringWithFormat:@"%ld",(long)[self countOfTablesOrder:[userDict objectForKey:@"user"]]];
+    } else {
+        NSDictionary *userDict = [_users objectAtIndex:indexPath.row];
+        cell.tableNameText.text = [userDict objectForKey:@"user"];
+        cell.badgeCountText.text = [NSString stringWithFormat:@"%ld",(long)[self countOfTablesOrder:[userDict objectForKey:@"user"]]];
+    }
+    
     return cell;
 }
 
 - (NSString *)tableView:(nonnull UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return @"Genel Siparişler";
-    } else if(section == 1) {
+    if(section == 0) {
         return @"Masa Siparişleri";
     } else {
         return @"Kullanıcı Siparişleri";

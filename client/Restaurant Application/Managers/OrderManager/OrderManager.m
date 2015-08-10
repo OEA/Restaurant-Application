@@ -48,6 +48,17 @@
     }];
 }
 
+- (void)getAllOrders:(void(^)(NSURLSessionDataTask *task, id responseObject))success
+             failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure
+{
+    NSString *url = [SERVICE_URL stringByAppendingString:@"order/getall"];
+    [self GET:url parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        success(task, responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failure(task, error);
+    }];
+}
+
 - (void)getOrders:(NSString *)user
           success:(void(^)(NSURLSessionDataTask *task, id responseObject))success
           failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure

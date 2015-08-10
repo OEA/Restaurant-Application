@@ -24,6 +24,11 @@
           success:(void(^)(NSURLSessionDataTask *task, id responseObject))success
           failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure;
 
+
+- (void)getAllOrders:(void(^)(NSURLSessionDataTask *task, id responseObject))success
+          failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure;
+
+
 - (void)payOrder:(NSString *)_id
          success:(void(^)(NSURLSessionDataTask *task, id responseObject))success
          failure:(void(^)(NSURLSessionDataTask *task, NSError *error))failure;
