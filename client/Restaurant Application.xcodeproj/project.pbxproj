@@ -19,6 +19,7 @@
 		17EA63F11B70EA5A004EAEC7 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EA63F01B70EA5A004EAEC7 /* MenuCell.m */; };
 		17EB43DE1B74E43300C33B3E /* AdminMenuTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EB43DD1B74E43300C33B3E /* AdminMenuTVC.m */; };
 		17EB43E21B74E6F500C33B3E /* AdminMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EB43E11B74E6F500C33B3E /* AdminMenuCell.m */; };
+		17EC55401B788EFB00D91D78 /* AdminDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EC553F1B788EFB00D91D78 /* AdminDetailVC.m */; };
 		17FECF0A1B6F2D2D00791B5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FECF091B6F2D2D00791B5F /* main.m */; };
 		17FECF0D1B6F2D2D00791B5F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FECF0C1B6F2D2D00791B5F /* AppDelegate.m */; };
 		17FECF101B6F2D2D00791B5F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FECF0F1B6F2D2D00791B5F /* ViewController.m */; };
@@ -69,6 +70,8 @@
 		17EB43DD1B74E43300C33B3E /* AdminMenuTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminMenuTVC.m; sourceTree = "<group>"; };
 		17EB43E01B74E6F500C33B3E /* AdminMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminMenuCell.h; sourceTree = "<group>"; };
 		17EB43E11B74E6F500C33B3E /* AdminMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminMenuCell.m; sourceTree = "<group>"; };
+		17EC553E1B788EFB00D91D78 /* AdminDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminDetailVC.h; sourceTree = "<group>"; };
+		17EC553F1B788EFB00D91D78 /* AdminDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminDetailVC.m; sourceTree = "<group>"; };
 		17FECF051B6F2D2D00791B5F /* Restaurant Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Restaurant Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17FECF091B6F2D2D00791B5F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		17FECF0B1B6F2D2D00791B5F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -169,6 +172,7 @@
 		17EB43DA1B74E3E700C33B3E /* Admin */ = {
 			isa = PBXGroup;
 			children = (
+				17EC553D1B788ECF00D91D78 /* AdminDetailVC */,
 				17EB43DF1B74E6CC00C33B3E /* MenuCell */,
 				17EB43DB1B74E40B00C33B3E /* MenuTVC */,
 			);
@@ -191,6 +195,15 @@
 				17EB43E11B74E6F500C33B3E /* AdminMenuCell.m */,
 			);
 			path = MenuCell;
+			sourceTree = "<group>";
+		};
+		17EC553D1B788ECF00D91D78 /* AdminDetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				17EC553E1B788EFB00D91D78 /* AdminDetailVC.h */,
+				17EC553F1B788EFB00D91D78 /* AdminDetailVC.m */,
+			);
+			path = AdminDetailVC;
 			sourceTree = "<group>";
 		};
 		17FECEFC1B6F2D2D00791B5F = {
@@ -485,6 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17FECF101B6F2D2D00791B5F /* ViewController.m in Sources */,
+				17EC55401B788EFB00D91D78 /* AdminDetailVC.m in Sources */,
 				17EB43DE1B74E43300C33B3E /* AdminMenuTVC.m in Sources */,
 				17FECF431B6F8FAE00791B5F /* CategoryM.m in Sources */,
 				17FECF371B6F323C00791B5F /* CategoryManager.m in Sources */,

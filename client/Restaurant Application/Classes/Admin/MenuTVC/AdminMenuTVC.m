@@ -11,6 +11,7 @@
 #import "OrderManager.h"
 
 @interface AdminMenuTVC ()
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loading;
 
 @end
 
@@ -56,6 +57,7 @@
         }
     }
     [self.tableView reloadData];
+    [self.loading stopAnimating];
 }
 
 - (BOOL)hasAddedUser:(NSString *)name :(NSMutableArray *)array
@@ -118,6 +120,7 @@
     
     return cell;
 }
+
 
 - (NSString *)tableView:(nonnull UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
