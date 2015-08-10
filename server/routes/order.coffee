@@ -32,6 +32,17 @@ ctrl.init = (app, db) ->
       )
   )
 
+  app.get('/node/order/getall', (req, resp) ->
+    db.collection "orders", (err, collection) =>
+      collection.find({'active':{$ne : 0}, 'active':{$ne: "0"}}).toArray((err, orders) ->
+        resp.send(
+          code: 200,
+          message: "success",
+          orders: orders
+        )
+      )
+  )
+
   app.get('/node/order/get/:user', (req, resp) ->
     user = req.params.user
     db.collection "orders", (err, collection) =>
@@ -56,7 +67,7 @@ ctrl.init = (app, db) ->
 
   app.post('/node/order/changestatus', (req, resp) ->
     id = req.body._id
-    status = req.body.status
+    status = parseInt(req.body.status)
     _id = new ObjectID(id)
     if id? and status?
       db.collection "orders", (err, orderCollection) =>
